@@ -7,7 +7,7 @@ const data = {
             contrasenia: 'susanaal9009',
             fechaNacimiento: '1944-01-29',
             documento: 8274399,
-            fotoPerfil:   ,
+            fotoPerfil: "images/susana.png" 
             },
         {
             id: 2,
@@ -16,7 +16,7 @@ const data = {
             contrasenia: '12345678',
             fechaNacimiento: '1996-10-29',
             documento: 35746807,
-            fotoPerfil:   ,
+            fotoPerfil: "images/emilia.png" 
             },
         {
             id: 3,
@@ -25,7 +25,7 @@ const data = {
             contrasenia: 'kimj1234',
             fechaNacimiento: '1980-10-21',
             documento: 26890765,
-            fotoPerfil:   ,
+            fotoPerfil: "images/kim.png"
             },
         {
             id: 4,
@@ -34,7 +34,7 @@ const data = {
             contrasenia: 'slay',
             fechaNacimiento: '1999-05-23',
             documento: 39243746,
-            fotoPerfil:   ,
+            fotoPerfil: "images/james.png"  
             },
         {
             id: 5,
@@ -43,7 +43,7 @@ const data = {
             contrasenia: 'imabadgirl',
             fechaNacimiento: '2003-05-19',
             documento: 44938004,
-            fotoPerfil:   ,
+            fotoPerfil:"images/jojo.png"    
             },
     ],
 
