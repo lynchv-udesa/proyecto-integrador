@@ -6,26 +6,6 @@ const indexController = {
             index: db.productos,
         })
     },
-    
-    show: function(req,res){
-        let id = req.params.id;
-        for(let i=0; i < db.productos.length; i++){
-            if(id == db.productos.id){
-                return res.render('producto', {
-                    index: db.productos,
-                    imagen: `${db.productos[i].imagen}`,
-                    descripcion: `${db.productos[i].descripcion}`,
-                    nombreProducto: `${db.productos[i].nombreProducto}`,
-
-                })
-            }
-        }},
-
-    comentarios: function(req,res){
-        return res.render('comentarios', {
-            comment: db.comentarios, 
-        })
-    },
 
     profile: function(req,res){
         for(let i=0; i < db.usuario[1]; i++){
@@ -38,7 +18,40 @@ const indexController = {
             }
         },
     
+    search: function(req,res) {
+        let nombreProducto = req.query.nombreProducto; 
+        if (nombreProducto) {
+            return res.redirect(`/search-results/${nombreProducto}`)
+        } else {
+            return res.render("nombreProducto", {
+                mensaje: "No se encontraron resultados para"
+            });
+    }},
+    producto: function(req,res){
+        let id = req.params.nombreProducto;
+        let results = [];
+        for(let i=0; i < db.productos.length; i++){
+            if(id == db.productos.id){
+                results.push(db.productos[i])
+            }
+        }
+            if(resultado.length == 0){
+                return res.render('producto', {
+                    index: db.productos,
+                    imagen: `${db.productos[i].imagen}`,
+                    descripcion: `${db.productos[i].descripcion}`,
+                    nombreProducto: `${db.productos[i].nombreProducto}`,
+                    id: `${db.productos[i].id}`,
+                })}
+                
+                else{
+                    return res.render('producto', {
+                        mensaje: "No se encontraron resultados para"
+                    })
+                }
+            }
+    
+    };
  
-}
 
 module.exports = indexController;
