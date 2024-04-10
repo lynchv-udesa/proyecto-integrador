@@ -49,61 +49,61 @@ const data = {
 
     productos: [
         {
-            imagen: 
+            imagen:"images/sacoValencia.png",
             nombreProducto: 'SACO VALENCIA',
             descripcion: 'Saco entallado confeccionado en género sastrero, suave y agradable. Un diseño clásico modernizado, con recortes de entalle y cuello sin quiebre. Posee bolsillos sastreros con tapa, y una etiqueta tejida en la manga, exclusiva de nuestra colección. Combinalo con el Pantalon Anto para lograr el total look.' ,
             id: 1,
             },    
         {
-            imagen: ,
+            imagen: "images/pantalonSkyBlack.png" ,
             nombreProducto: 'PANTALON SKY BLACK',
             descripcion: 'El pantalón Sky está confeccionado en un género de punto compacto con spandex. El fit es ajustado al cuerpo, con tajo en la botamanga. Un definitivo must-have para día y noche. Tiene elástico en la cintura para un mejor calce, y cierre invisible en espalda.',
             id: 2,
             },
         {
-            imagen: ,
+            imagen: "images/camperaFantasy.png" ,
             nombreProducto: 'CAMPERA FANTASY',
             descripcion: 'Campera bomber confeccionada en rústico metálizado.',
             id: 3,
             },
         {
-            imagen: ,
+            imagen: "images/bodyAna.png" ,
             nombreProducto: 'BODY ANA',
             descripcion: 'Body al cuerpo confeccionado en tejido de punto suave. Cuenta con extracción en espalda y broches en entrepierna. Un item de nuestra colección que no puede faltarte!',
             id: 4,
             },
         {
-            imagen: ,
+            imagen: "images/blusaKatu.png",
             nombreProducto: 'BLUSA KATU',
             descripcion: 'Blusa holgada confeccionada en satén opaco combinado con género traslucido. Presenta detalle de puntilla en mangas. ',
             id: 5,
             },
         {
-            imagen: ,
+            imagen: "images/pantalonFlMarti.png" ,
             nombreProducto: 'PANTALON FL MARTI',
             descripcion: 'Pantalón recto confeccionado en género brilloso con textura. En el delantero lleva bolsillos.',
             id: 6,
             },
         {
-            imagen: ,
+            imagen: "images/miniScarlet.png" ,
             nombreProducto: 'MINI SCARLET',
             descripcion: 'Mini drapeada confeccionada en cuero ecológico de calce al cuerpo. Acceso a la prenda por cierre lateral.',
             id: 7,
             },
         {
-            imagen: ,
+            imagen: "images/miniLuna.png" ,
             nombreProducto: 'MINI LUNA',
             descripcion: 'Mini short confeccionada en crepe viscosa. Tiro medio. Botón exclusivo "Tucci".',
             id: 8,
             },
         {
-            imagen: ,
+            imagen:"images/poleraCande.png" ,
             nombreProducto: 'POLERA CANDE',
             descripcion: 'Polera tejida ajustada al cuerpo con cuello alto. Un modelo clásico que no falla. El tejido tiene textura suave y abrigada. Ideal para usar de base en cualquier outfit de la temporada.',
             id: 9,
             },
         {
-            imagen: ,
+            imagen: "images/sweaterTwins.png" ,
             nombreProducto: 'SWEATER TWINS',
             descripcion: 'Nuestro Sweater Twins es un conjunto de 2 piezas tejidas que se pueden usar juntas o separadas. Por un lado las mangas, y por debajo el top strapless. La silueta es ajustada al cuerpo, y el tacto es super suave y agradable. Un diseño con mucha onda para combinar con una infinidad de posibidades. En el escote de espalda presenta una badana con nuestro logo en foil metalizado.',
             id: 10,
