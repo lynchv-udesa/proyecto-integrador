@@ -111,7 +111,7 @@ const data = {
     ],
     comentarios: [
         {
-            nombreUsuarioC: ,
+            nombreUsuarioC: 'jamie',
             textoC: '¡Me encanta esta prenda! El color es exactamente como se muestra en la imagen.',
             imagenPerfilC: ,
             id: 1,
