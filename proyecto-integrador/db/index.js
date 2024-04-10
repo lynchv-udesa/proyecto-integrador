@@ -111,182 +111,182 @@ const data = {
     ],
     comentarios: [
         {
-            nombreUsuarioC:
-            textoC:
-            imagenPerfilC: 
+            nombreUsuarioC: ,
+            textoC: '¡Me encanta esta prenda! El color es exactamente como se muestra en la imagen.',
+            imagenPerfilC: ,
             id: 1,
             },
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'susanita',
+            textoC: 'Después de lavarlo una vez, noté que se encogió un poco.',
             imagenPerfilC: 
             id: 2,
             },
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'jojosiwa',
+            textoC: 'Algunas costuras parecen un poco débiles y temo que puedan desgarrarse fácilmente.',
             imagenPerfilC: 
             id: 3,
             },
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'jamie',
+            textoC: 'El diseño es único y moderno. Recibí muchos cumplidos cuando la usé.',
             imagenPerfilC: 
             id: 4,
             },
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'kimk1980',
+            textoC: 'Es una prenda versátil que se puede combinar con muchas otras prendas.',
             imagenPerfilC: 
             id: 5,
             },
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'jamie',
+            textoC: '¿Cuál es el tiempo estimado de entrega para este artículo?',
             imagenPerfilC: 
             id: 6,
             }
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'jojosiwa',
+            textoC: 'El color de la prenda no coincide exactamente con lo que se muestra en la imagen en línea.',
             imagenPerfilC: 
             id: 7,
             },
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'kimk1980',
+            textoC: 'El precio es un poco alto en comparación con productos similares en otras tiendas.',
             imagenPerfilC: 
             id: 8,
             },
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'jojosiwa',
+            textoC: 'La descripción del producto en línea no era muy detallada. Me habría gustado saber más sobre el material y las instrucciones de cuidado.',
             imagenPerfilC: 
             id: 9,
             },
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'jamie',
+            textoC: '¿Se puede devolver esta prenda si no estoy satisfecho con ella?',
             imagenPerfilC: 
             id: 10,
             },
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'emiliam',
+            textoC: 'La atención al cliente fue excelente. Respondieron rápidamente a todas mis preguntas.',
             imagenPerfilC: 
             id: 11,
             },
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'susanita',
+            textoC: 'Qué tipo de material se usa para esta prenda?',
             imagenPerfilC: 
             id: 12,
             }
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'emiliam',
+            textoC: 'La entrega fue rápida y el artículo llegó en perfectas condiciones.'.
             imagenPerfilC: 
             id: 13,
             },
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'susanita',
+            textoC: 'No estoy completamente satisfecho con la forma en que queda. No se ajusta tan bien como esperaba.',
             imagenPerfilC: 
             id: 14,
             },
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'jojosiwa',
+            textoC: '¿Tiene esta prenda bolsillos?',
             imagenPerfilC: 
             id: 15,
             },
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'susanita',
+            textoC: 'El material no es tan suave como esperaba. Es un poco áspero al tacto.',
             imagenPerfilC: 
             id: 16,
             },
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'jojosiwa',
+            textoC: '¿Cuál es el tiempo estimado de entrega para este artículo?',
             imagenPerfilC: 
             id: 17,
             },
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'kimk1980',
+            textoC: '¿Esta prenda viene con alguna garantía de calidad?',
             imagenPerfilC: 
             id: 18,
             }
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'kimk1980',
+            textoC: '¿La tela de esta prenda es elástica o tiene algo de elasticidad?',
             imagenPerfilC: 
             id: 19,
             },
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'susanita',
+            textoC: 'La etiqueta de cuidado en la prenda no es muy clara. Me gustaría tener instrucciones más detalladas sobre cómo lavarla correctamente.',
             imagenPerfilC: 
             id: 20,
             },
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'jamie',
+            textoC: 'Recibí mi pedido antes de lo esperado. ¡Gracias por el envío rápido!', 
             imagenPerfilC: 
             id: 21,
             },
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'emiliam',
+            textoC: 'El precio es un poco elevado para mi presupuesto. Me hubiera gustado encontrar una opción más económica.',
             imagenPerfilC: 
             id: 22,
             },
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'jamie',
+            textoC: '¿La prenda requiere planchado después del lavado?',
             imagenPerfilC: 
             id: 23,
             },
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'jojosiwa',
+            textoC: 'Después de usarla unas pocas veces, noté que el color comenzó a desvanecerse un poco.',
             imagenPerfilC: 
             id: 24,
             }
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'jojosiwa',
+            textoC: 'La guía de tallas fue precisa, lo que hizo que fuera fácil elegir el tamaño correcto.', 
             imagenPerfilC: 
             id: 25,
             },
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'emiliam',
+            textoC: '¿La longitud de la prenda es ajustable o está fija?',
             imagenPerfilC: 
             id: 26,
             },
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'kimk1980',
+            textoC: 'El tejido no es tan suave como esperaba. Es un poco áspero al tacto.',
             imagenPerfilC: 
             id: 27,
             },
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'susanita',
+            textoC: 'Estoy impresionado con lo cómoda que es esta prenda. ¡No quiero quitármela!',
             imagenPerfilC: 
             id: 28,
             },
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'emiliam',
+            textoC: '¿Este artículo está disponible en tallas plus?',
             imagenPerfilC: 
             id: 29,
             },
         {
-            nombreUsuarioC:
-            textoC:
+            nombreUsuarioC: 'kimk1980',
+            textoC: 'No estoy seguro de cómo combinar esta prenda con otras piezas de mi armario.',
             imagenPerfilC: 
             id: 30,
             }
