@@ -8,5 +8,9 @@ const router = express.Router();
 //router.get('/login', indexController.login);
 //router.get('/register', indexController.register);
 
+router.get('/', function(req, res, next) {
+    res.render('index', { title: 'Express' });
+  });
+
 
 module.exports = router;

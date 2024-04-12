@@ -4,8 +4,31 @@
   <body>
     <%- include('./partials/header') %>
 	<!-- Banner -->
-	<div class="banner">
-		<img src="images/img-home-banner.jpg" alt="Banner de ofertas">
+	<div uk-slideshow="autoplay: true; autoplay-interval: 3000; finite:true;">
+
+		<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
+
+			<div class="uk-slideshow-items">
+				<div>
+					<img class="banner__img" src="./images/banner1.png" alt="" uk-cover>
+				</div>
+				<div>
+					<img class="banner__img" src="./images/banner2.png" alt="" uk-cover>
+				</div>
+				<div>
+					<img class="banner__img" src="./images/banner3.png" alt="" uk-cover>
+				</div>
+			</div>
+
+			<a class="uk-position-center-left uk-position-small uk-hidden-hover" href uk-slidenav-previous
+				uk-slideshow-item="previous"></a>
+			<a class="uk-position-center-right uk-position-small uk-hidden-hover" href uk-slidenav-next
+				uk-slideshow-item="next"></a>
+
+		</div>
+
+		<ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin"></ul>
+
 	</div>
 	<!-- /Banner -->
 
@@ -145,5 +168,6 @@
 	</div>
 	<!-- /Más comentados -->
     <%- include('./partials/footer') %>
+	<script src="./js/uikit.min.js"></script>
   </body>
 </html>
