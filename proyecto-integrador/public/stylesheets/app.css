@@ -157,6 +157,10 @@ hr {
   margin-bottom: 30px;
 }
 
+.details{
+  margin-top: 0;
+}
+
 .products-title {
   font-size: 2rem;
   color: #000;

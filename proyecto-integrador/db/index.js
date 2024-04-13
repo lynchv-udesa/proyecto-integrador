@@ -7,7 +7,7 @@ const data = {
             contrasenia: 'susanaal9009',
             fechaNacimiento: '1944-01-29',
             documento: 8274399,
-            fotoPerfil: "images/susana.png"
+            fotoPerfil: "/images/susana.png"
         },
         {
             id: 2,
@@ -16,7 +16,7 @@ const data = {
             contrasenia: '12345678',
             fechaNacimiento: '1996-10-29',
             documento: 35746807,
-            fotoPerfil: "images/emilia.png"
+            fotoPerfil: "/images/emilia.png"
         },
         {
             id: 3,
@@ -25,7 +25,7 @@ const data = {
             contrasenia: 'kimj1234',
             fechaNacimiento: '1980-10-21',
             documento: 26890765,
-            fotoPerfil: "images/kim.png"
+            fotoPerfil: "/images/kim.png"
         },
         {
             id: 4,
@@ -34,7 +34,7 @@ const data = {
             contrasenia: 'slay',
             fechaNacimiento: '1999-05-23',
             documento: 39243746,
-            fotoPerfil: "images/james.png"
+            fotoPerfil: "/images/james.png"
         },
         {
             id: 5,
@@ -43,67 +43,67 @@ const data = {
             contrasenia: 'imabadgirl',
             fechaNacimiento: '2003-05-19',
             documento: 44938004,
-            fotoPerfil: "images/jojo.png"
+            fotoPerfil: "/images/jojo.png"
         },
     ],
 
     productos: [
         {
-            imagen: "images/sacoValencia.png",
+            imagen: "/images/sacoValencia.png",
             nombreProducto: 'SACO VALENCIA',
             descripcion: "Saco entallado confeccionado en género sastrero, suave y agradable.",
             id: 1,
         },
         {
-            imagen: "images/pantalonSkyBlack.png",
+            imagen: "/images/pantalonSkyBlack.png",
             nombreProducto: 'PANTALON SKY BLACK',
             descripcion: 'El pantalón Sky está confeccionado en un género de punto compacto con spandex.',
             id: 2,
         },
         {
-            imagen: "images/camperaFantasy.png",
+            imagen: "/images/camperaFantasy.png",
             nombreProducto: 'CAMPERA FANTASY',
             descripcion: 'Campera bomber confeccionada en rústico metálizado.',
             id: 3,
         },
         {
-            imagen: "images/bodyAna.png",
+            imagen: "/images/bodyAna.png",
             nombreProducto: 'BODY ANA',
             descripcion: 'Body al cuerpo confeccionado en tejido de punto suave.',
             id: 4,
         },
         {
-            imagen: "images/blusaKatu.png",
+            imagen: "/images/blusaKatu.png",
             nombreProducto: 'BLUSA KATU',
             descripcion: 'Blusa holgada confeccionada en satén opaco combinado con género traslucido.',
             id: 5,
         },
         {
-            imagen: "images/pantalonFlMarti.png",
+            imagen: "/images/pantalonFlMarti.png",
             nombreProducto: 'PANTALON FL MARTI',
             descripcion: 'Pantalón recto confeccionado en género brilloso con textura.',
             id: 6,
         },
         {
-            imagen: "images/miniScarlet.png",
+            imagen: "/images/miniScarlet.png",
             nombreProducto: 'MINI SCARLET',
             descripcion: 'Mini drapeada confeccionada en cuero ecológico de calce al cuerpo.',
             id: 7,
         },
         {
-            imagen: "images/miniLuna.png",
+            imagen: "/images/miniLuna.png",
             nombreProducto: 'MINI LUNA',
             descripcion: 'Mini short confeccionada en crepe viscosa.',
             id: 8,
         },
         {
-            imagen: "images/poleraCande.png",
+            imagen: "/images/poleraCande.png",
             nombreProducto: 'POLERA CANDE',
             descripcion: 'Polera tejida ajustada al cuerpo con cuello alto.',
             id: 9,
         },
         {
-            imagen: "images/sweaterTwins.png",
+            imagen: "/images/sweaterTwins.png",
             nombreProducto: 'SWEATER TWINS',
             descripcion: 'Nuestro Sweater Twins es un conjunto de 2 piezas tejidas que se pueden usar juntas o separadas.',
             id: 10,
