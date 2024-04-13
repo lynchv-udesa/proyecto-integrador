@@ -10,11 +10,42 @@
 				<h2 class="products-title">Ingresar</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá va el formulario de login. <br>
-			Debe cumplir con los puntos de la consigna y ser coherente con la tabla de la base de datos <br>
-			Eliminen estás líneas y coloquen el formulario. <br>
-			Recuerden todo lo que necesita tanto la etiqueta form como los campos input para operar correctamtente</i> <br>
-			////////////////
+			<h2 class="col-12"> <i>
+				<main class="mainRegister"></main>
+				<form action="" method="get"> 
+
+					<h3>Usuario</h3>
+					<div class="contenedor-input">
+				
+						<label for="miEmail"></label>
+						<input type="email" name="email" id="miEmail" value=""> 
+					</div>
+
+					<h3>Contraseña</h3>            
+					<div class="contenedor-input">
+		
+						<label for="miContra"></label>
+						<input type="password" name="password" id="miContra" value=""> 
+
+					</div>
+		
+					<h3>Recordarme</h3>            
+					<div class="contenedor-input">
+						<label for="Recordarme"></label>
+						<input type="checkbox" value="Recordarme">
+
+					</div>
+
+
+					<div class="contenedor-input1">
+						<label for="Registrar"></label>
+						<input type="button" value="Registrarme">
+					
+						<label for="Cancelar"></label>
+						<input type="reset" value="Cancelar">
+					</div>
+				</form>
+			</main>
 			</h2>
 
     <%- include('./partials/footer') %>
