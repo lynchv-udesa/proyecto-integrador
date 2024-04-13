@@ -23,7 +23,6 @@ html,
 body {
   min-height: 100vh;
   margin: 0;
-  font-size: 10px;
 }
 
 body {
@@ -159,9 +158,12 @@ hr {
 }
 
 .products-title {
-  font-size: 2.4em;
+  font-size: 2rem;
+  color: #000;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
-  color: var(--gray);
+  font-style: normal;
 }
 
 .product-box {
@@ -189,9 +191,12 @@ hr {
 }
 
 .product-box_data h2 {
-  font-size: 2.4em;
-  font-weight: 300;
+  font-size: 1em;
   margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+
 }
 
 .product-box_data span {
@@ -202,7 +207,8 @@ hr {
 }
 
 .product-box_data p {
-  font-size: 1.5em;
+  font-family: var(--base-font-family);
+  font-size: 0.8em;
   width: 100%;
   color: var(--gray);
   margin: 0;
@@ -249,7 +255,7 @@ hr {
 
 /*====== Footer ======*/
 .main-footer {
-  background-color: #ffffff;
+  background-color: #1C140C;
   padding: 20px 0;
   margin-top: 80px;
 }
@@ -264,15 +270,18 @@ hr {
 }
 
 .footer-data h2 {
-  color: var(--gray);
-  font-size: 2.4em;
+  color: #EDDACE;
+  font-size: 1.2em;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
+  font-style: normal;
 }
 
 .footer-data p {
-  color: var(--gray);
-  font-size: 1.5em;
-  font-weight: 300;
+  color:#EDDACE;
+  font-size: 1em;
+  font-weight: 400;
+  font-family: var(--base-font-family);
 }
 
 .sub-footer {
@@ -460,7 +469,6 @@ textarea.form-input {
 }
 
 .btn{
-  background-color: #1259c3;
   padding: 10px 20px;
   border-radius: 4px;
   color: #fff;
@@ -537,6 +545,7 @@ header {
 
 .nav__header:hover {
   background-color: #1C140C;
+  transition: 0.1s ease-in;
 }
 
 .nav__img {
@@ -565,6 +574,7 @@ header {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal;
+  font-size: 0.7rem;
 
 }
 
@@ -572,8 +582,9 @@ header {
 .ul__li-a {
   color: #EDDACE;
   font-family: "Poppins", sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
+  font-size: 0.9rem;
 }
 
 .ul__li-a:hover {
@@ -596,10 +607,23 @@ header {
 
 
 .uk-slideshow-items {
-  aspect-ratio: 20/9 !important;
+  aspect-ratio: 19/9 !important;
 }
 
 
 .uk-dotnav{
   margin: 0 !important;
+}
+
+
+.container__width{
+  width: 100%;
+}
+
+.scrolled {
+  background-color: #1C140C;
+}
+
+.uk-link-toggle:hover .uk-link, .uk-link:hover, a:hover {
+  text-decoration: none !important;
 }
