@@ -1,18 +1,26 @@
-let db = require('../db/index');
+let db = require("../db/index");
 
 const indexController = {
-    productos: function(req,res){
-        return res.render('productos', {
+    index: function(req,res){
+        return res.render('index', {
             index: db.productos,
         })
+    },
+
+    login: function(req,res){
+        return res.render('login')
+    },
+
+    register: function(req,res){
+        return res.render('register')
     },
 
     profile: function(req,res){
         for(let i=0; i < db.usuario[1]; i++){
                 return res.render('usuario', {
                     index: db.usuario,
-                    fotoPerfil: `${db.usuario[i].fotoPerfil}`,
-                    nombreUsuario: `${db.usuario[i].nombreUsuario}`,
+                    fotoPerfil: ${db.usuario[i].fotoPerfil},
+                    nombreUsuario: ${db.usuario[i].nombreUsuario},
 
                 })
             }
@@ -21,12 +29,13 @@ const indexController = {
     search: function(req,res) {
         let nombreProducto = req.query.nombreProducto; 
         if (nombreProducto) {
-            return res.redirect(`/search-results/${nombreProducto}`)
+            return res.redirect(/search-results/${nombreProducto})
         } else {
             return res.render("nombreProducto", {
                 mensaje: "No se encontraron resultados para"
             });
     }},
+    
     producto: function(req,res){
         let id = req.params.nombreProducto;
         let results = [];
@@ -38,10 +47,10 @@ const indexController = {
             if(resultado.length == 0){
                 return res.render('producto', {
                     index: db.productos,
-                    imagen: `${db.productos[i].imagen}`,
-                    descripcion: `${db.productos[i].descripcion}`,
-                    nombreProducto: `${db.productos[i].nombreProducto}`,
-                    id: `${db.productos[i].id}`,
+                    imagen: ${db.productos[i].imagen},
+                    descripcion: ${db.productos[i].descripcion},
+                    nombreProducto: ${db.productos[i].nombreProducto},
+                    id: ${db.productos[i].id},
                 })}
                 
                 else{
