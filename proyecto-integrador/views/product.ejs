@@ -4,13 +4,6 @@
 <body>
     <%- include('./partials/header') %>
 <!-- product detail -->
-<div class="container products-wrapper">
-    <div class="d-flex align-items-center">
-        <h2 class="products-title"><%= nombreProducto %></h2> 
-        <p class="product-detail-description">
-            <a href="product-add.html">Editar</a>
-        </p>
-    </div>
     <div class="product-detail">
         <div class="row">
             <article class="col-12 col-lg-8 product-detail-info">
@@ -19,9 +12,18 @@
                     <%= descripcion %></p>
             </article>
 
+            <div class="container products-wrapper details">
+                <div class="d-flex align-items-center">
+                    <h2 class="products-title"><%= nombreProducto %></h2> 
+                    <p class="product-detail-description">
+                        <a href="/product/add">Editar</a>
+                    </p>
+                </div>
+
             <div class="col-12 col-lg-4">
                 <section class="comments">
                     
+    
                     <article>
                         <img src="<%= imagenPerfilC %>" alt="">
                         <div class="data">
@@ -45,4 +47,6 @@
 <!-- /product detail -->
     <%- include('./partials/footer') %>
 </body>
+<script src="/js/uikit.min.js"></script>
+<script src="/js/header-scroll.js"></script>
 </html>
