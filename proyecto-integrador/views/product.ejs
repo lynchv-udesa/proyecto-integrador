@@ -4,6 +4,13 @@
 <body>
     <%- include('./partials/header') %>
 <!-- product detail -->
+<div class="container products-wrapper">
+    <div class="d-flex align-items-center">
+        <h2 class="products-title"><%= nombreProducto %></h2> 
+        <p class="product-detail-description">
+            <a href="product-add.html">Editar</a>
+        </p>
+    </div>
     <div class="product-detail">
         <div class="row">
             <article class="col-12 col-lg-8 product-detail-info">
@@ -12,27 +19,18 @@
                     <%= descripcion %></p>
             </article>
 
-            <div class="container products-wrapper details">
-                <div class="d-flex align-items-center">
-                    <h2 class="products-title"><%= nombreProducto %></h2> 
-                    <p class="product-detail-description">
-                        <a href="/product/add">Editar</a>
-                    </p>
-                </div>
-
             <div class="col-12 col-lg-4">
                 <section class="comments">
-                    
-    
+                    <% for (let i=0; i < index[5]; i++ ) { %>
                     <article>
-                        <img src="<%= imagenPerfilC %>" alt="">
+                        <img src="<%= comment[i].imagenPerfilC %>" alt="">
                         <div class="data">
                             <p class="user">
-                            <strong> <a href="profile.ejs"><%= nombreUsuarioC %></a> </strong>
-                            <%= textoC %>
+                            <strong> <a href="profile.ejs"><%= comment[i].nombreUsuarioC %></a> </strong>
+                            <%= comment[i].textoC %>
                         </div>
                     </article>
-
+                    <% } %>
 
                 </section>
                 <form class="form" action="" method="POST">
@@ -47,6 +45,4 @@
 <!-- /product detail -->
     <%- include('./partials/footer') %>
 </body>
-<script src="/js/uikit.min.js"></script>
-<script src="/js/header-scroll.js"></script>
 </html>
