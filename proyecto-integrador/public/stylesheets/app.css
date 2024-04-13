@@ -269,8 +269,8 @@ hr {
 }
 
 .footer-data i {
-  color: var(--light-blue);
-  font-size: 3.5em;
+  color:  #EDDACE;
+  font-size: 2em;
 }
 
 .footer-data h2 {
@@ -297,6 +297,16 @@ hr {
   margin: 0;
   color: var(--gray);
   padding: 15px 0;
+}
+
+.bi-bi-shield-check {
+  color: #dcdcdc;
+}
+.bi-bi-shield-check {
+  color: #dcdcdc;
+}
+.bi-bi-shield-check {
+  color: #dcdcdc;
 }
 
 

@@ -18,7 +18,7 @@ const productController = {
     },
 
     comentarios: function (req, res) {
-        return res.render('comentarios', {
+        return res.render('product', {
             comment: db.comentarios,
         })
     },
