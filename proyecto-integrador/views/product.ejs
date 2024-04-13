@@ -21,16 +21,16 @@
 
             <div class="col-12 col-lg-4">
                 <section class="comments">
-                    <% for (let i=0; i < index[5]; i++ ) { %>
+                    
                     <article>
-                        <img src="<%= comment[i].imagenPerfilC %>" alt="">
+                        <img src="<%= imagenPerfilC %>" alt="">
                         <div class="data">
                             <p class="user">
-                            <strong> <a href="profile.ejs"><%= comment[i].nombreUsuarioC %></a> </strong>
-                            <%= comment[i].textoC %>
+                            <strong> <a href="profile.ejs"><%= nombreUsuarioC %></a> </strong>
+                            <%= textoC %>
                         </div>
                     </article>
-                    <% } %>
+
 
                 </section>
                 <form class="form" action="" method="POST">
