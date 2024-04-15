@@ -31,6 +31,10 @@ body {
   background-color: var(--light-gray);
 }
 
+#body__product {
+  background-color: #1C140C;
+}
+
 ul,
 ol {
   list-style: none;
@@ -152,6 +156,13 @@ hr {
 
 
 /*====== Products ======*/
+.div__h2-p{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 2.5em;
+}
+
 .products-wrapper {
   margin-top: 30px;
   margin-bottom: 30px;
@@ -159,6 +170,8 @@ hr {
 
 .details{
   margin-top: 0;
+  margin-bottom: -5em;
+  padding: 10em 0 0 0;
 }
 
 .products-title {
@@ -168,6 +181,15 @@ hr {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal;
+}
+
+.products-title_especial{
+  font-size: 1.2em;
+  color: #1C140C;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin-bottom: 0;
 }
 
 .product-box {
@@ -269,8 +291,8 @@ hr {
 }
 
 .footer-data i {
-  color:  #EDDACE;
-  font-size: 2em;
+  color: var(--light-blue);
+  font-size: 3.5em;
 }
 
 .footer-data h2 {
@@ -299,16 +321,6 @@ hr {
   padding: 15px 0;
 }
 
-.bi-bi-shield-check {
-  color: #dcdcdc;
-}
-.bi-bi-shield-check {
-  color: #dcdcdc;
-}
-.bi-bi-shield-check {
-  color: #dcdcdc;
-}
-
 
 /*====== Product Detail ======*/
 .product-detail {
@@ -318,7 +330,7 @@ hr {
 }
 
 .product-detail-img {
-  width: 70%;
+  width: 50%;
   display: block;
   margin: auto;
 }
@@ -335,9 +347,20 @@ hr {
 }
 
 .product-detail-description {
-  padding: 15px 15px 15px 40px;
+  padding: 15px 15px 15px 30px;
   font-size: 1.8em;
   line-height: 1.5;
+  margin-bottom: 0;
+}
+
+.product-detail-a{
+  color: #1C140C;
+}
+
+.product-detail-description-p{
+  padding: 15px 15px 40px 40px;
+  line-height: 1.5;
+  margin: 0;
 }
 
 .product-detail-price {
@@ -382,13 +405,16 @@ hr {
 }
 
 .buy-now-button {
-  background-color: var(--light-blue);
-  font-size: 1.6em;
-  color: #ffffff;
+  background-color: #442C1C;
+  font-size: 1em;
+  color: #FCE4D4;
   padding: 15px;
   border-radius: 8px;
   border: none;
   margin-bottom: 15px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .action-button {
@@ -410,14 +436,13 @@ hr {
   background-color: rgb(248, 69, 37);
 }
 .comments {
-  padding: 30px 15px 15px 0;
+  padding: 30px 30px 30px 0;;
 }
 .comments article{
   margin-bottom: 7.5px;
   padding-bottom: 7.5px;
-  border-bottom: 1px solid #dcdcdc;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .comments img{
   width: 40px;
@@ -429,11 +454,11 @@ hr {
   
 }
 .comments p{
-  font-size: 1.5em;
+  font-size: 1em;
   margin-top: 0;
 }
 .comments .user{
-  font-size: 1.7em;
+  font-size: 1em;
 }
 
 /*====== Formularios ======*/
@@ -448,11 +473,12 @@ hr {
   width: 100%;
   height: 45px;
   margin-bottom: 15px;
-  font-size: 1.5em;
+  font-size: 0.9em;
   border-radius: 8px;
   border: none;
   border: solid 1px var(--gray);
   padding: 0 15px;
+
 }
 
 .error{
