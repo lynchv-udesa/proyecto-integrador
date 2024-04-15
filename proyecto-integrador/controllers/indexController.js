@@ -33,7 +33,7 @@ const indexController = {
     search: function(req,res) {
         let nombreProducto = req.query.nombreProducto; 
         if (nombreProducto) {
-            return res.redirect(`/search-results/${nombreProducto}`)
+            return res.redirect(`/search/${nombreProducto}`)
         } else {
             return res.render("search-results", {
                 mensaje: "No se encontraron resultados para"
@@ -48,8 +48,8 @@ const indexController = {
                 results.push(db.productos[i])
             }
         }
-            if(resultado.length == 0){
-                return res.render('product', {
+            if(resultado.length != 0){
+                return res.render('search-result', {
                     index: db.productos,
                     imagen: `${db.productos[i].imagen}`,
                     descripcion: `${db.productos[i].descripcion}`,

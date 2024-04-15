@@ -4,7 +4,8 @@ const router = express.Router();
 
 router.get('/', indexController.index);
 router.get('/profile', indexController.profile);
-//router.get('/search', indexController.search);
+router.get("/profile/edit", indexController.edit);
+router.get('/search/:nombreProducto', indexController.search);
 router.get("/register", indexController.register);
 router.get("/login", indexController.login);
 
