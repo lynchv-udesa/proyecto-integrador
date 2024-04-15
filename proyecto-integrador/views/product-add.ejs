@@ -3,15 +3,41 @@
     <%- include('./partials/head') %>
 <body>
     <%- include('./partials/header') %>
-    <div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Agregar productos</h2>
-			</div>
-			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>
+	<main class="mainRegister"></main>
+	<form action="" method="get"> 
+
+		<h3>Imagen</h3>
+		<div class="contenedor-input">
+	
+			<label for="Imagen"></label>
+			<input type="file" name="file" id="miFoto" value=""> 
+		</div>
+
+		<h3>Nombre del Producto</h3>
+		<div class="contenedor-input">
 		
-			</h2>
+			<label for="miNombre"></label>
+			<input type="text" name="Nombre" id="miNombre" value="">
+		</div>
+
+		<h3>Descripcion</h3>            
+		<div class="contenedor-input">
+
+			<label for="descripcion"></label>
+			<input type="text" name="descripcion" id="miDescripcion" value=""> 
+
+		</div>
+
+
+		<div class="contenedor-input1">
+			<label for="Registrar"></label>
+			<input type="button" value="Registrarme">
+		
+			<label for="Cancelar"></label>
+			<input type="reset" value="Cancelar">
+		</div>
+	</form>
+</main>
     <%- include('./partials/footer') %>
 </body>
 </html>
