@@ -27,38 +27,35 @@ const productController = {
     search: function(req,res) {
         let nombreProducto = req.query.nombreProducto; 
         if (nombreProducto) {
-            return res.redirect(`/search-results/${nombreProducto}`)
+            return res.redirect(`/product/search/${nombreProducto}`);
         } else {
             return res.render("search-results", {
                 mensaje: "No se encontraron resultados para"
             });
-    }},
-    
-    producto: function(req,res){
+        }
+
         let id = req.params.nombreProducto;
         let results = [];
         for(let i=0; i < db.productos.length; i++){
-            if(id == db.productos.id){
-                results.push(db.productos[i])
+            if(id == db.productos.nombreProducto){
+                results.push(db.productos[i]);
             }
         }
-            if(resultado.length == 0){
-                return res.render('product', {
-                    index: db.productos,
-                    imagen: `${db.productos[i].imagen}`,
-                    descripcion: `${db.productos[i].descripcion}`,
-                    nombreProducto: `${db.productos[i].nombreProducto}`,
-                    id: `${db.productos[i].id}`,
-                })}
-                
-                else{
-                    return res.render('product', {
-                        mensaje: "No se encontraron resultados para"
-                    })
-                }
-            }
-    
-    
+        
+        if(results.length != 0){
+            return res.render('search-results', {
+                index: db.productos,
+                imagen: `${db.productos[i].imagen}`,
+                descripcion: `${db.productos[i].descripcion}`,
+                nombreProducto: `${db.productos[i].nombreProducto}`,
+                id: `${db.productos[i].id}`,
+            });
+        } else {
+            return res.render('product', {
+                mensaje: "No se encontraron resultados para"
+            });
+        }
+    }
 };
 
 module.exports = productController;
