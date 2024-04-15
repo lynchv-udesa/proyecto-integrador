@@ -18,7 +18,7 @@ const indexController = {
 
     profile: function(req,res){
         for(let i=0; i < 1; i++){
-                return res.render('usuario', {
+                return res.render('profile', {
                     index: db.usuario,
                     fotoPerfil: `${db.usuario[i].fotoPerfil}`,
                     nombreUsuario: `${db.usuario[i].nombreUsuario}`,
@@ -35,7 +35,7 @@ const indexController = {
         if (nombreProducto) {
             return res.redirect(`/search-results/${nombreProducto}`)
         } else {
-            return res.render("nombreProducto", {
+            return res.render("search-results", {
                 mensaje: "No se encontraron resultados para"
             });
     }},
@@ -49,7 +49,7 @@ const indexController = {
             }
         }
             if(resultado.length == 0){
-                return res.render('producto', {
+                return res.render('product', {
                     index: db.productos,
                     imagen: `${db.productos[i].imagen}`,
                     descripcion: `${db.productos[i].descripcion}`,
@@ -58,7 +58,7 @@ const indexController = {
                 })}
                 
                 else{
-                    return res.render('producto', {
+                    return res.render('product', {
                         mensaje: "No se encontraron resultados para"
                     })
                 }
