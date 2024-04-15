@@ -17,7 +17,7 @@ const indexController = {
     },
 
     profile: function(req,res){
-        for(let i=0; i < db.usuario[1]; i++){
+        for(let i=0; i < 1; i++){
                 return res.render('usuario', {
                     index: db.usuario,
                     fotoPerfil: `${db.usuario[i].fotoPerfil}`,
@@ -25,6 +25,10 @@ const indexController = {
                 })
             }
         },
+
+    edit: function(req,res){
+        return res.render('profile-edit');
+    },
     
     search: function(req,res) {
         let nombreProducto = req.query.nombreProducto; 

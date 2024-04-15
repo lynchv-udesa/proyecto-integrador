@@ -11,22 +11,14 @@ const productController = {
                     imagen: `${db.productos[i].imagen}`,
                     descripcion: `${db.productos[i].descripcion}`,
                     nombreProducto: `${db.productos[i].nombreProducto}`,
+                    comment: db.comentarios,
+
 
                 })
             }
         }
     },
 
-    comentarios: function (req, res) {
-        for (let i = 27; i < db.productos.length; i++){ 
-            return res.render('product', {
-                comment: db.comentarios,
-                nombreUsuarioC: `${db.comentarios[i].nombreUsuarioC}`,
-                textoC: `${db.comentarios[i].nombreUsuarioC}`,
-                imagenPerfilC: `${db.comentarios[i].imagenPerfilC}`,
-
-            })}
-    },
 
     add: function(req, res) {
         return res.render('product-add');

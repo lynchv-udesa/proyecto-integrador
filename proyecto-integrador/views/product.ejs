@@ -15,13 +15,27 @@
         <div class="row">
             <article class="col-12 col-lg-8 product-detail-info">
                 <img src="<%= imagen %>" alt="" class="product-detail-img">
-                <p class="product-detail-description">
-                    <%= descripcion %></p>
+
             </article>
 
             <div class="col-12 col-lg-4">
                 <section class="comments">
-                    <% for (let i=0; i < index[5]; i++ ) { %>
+                    <div class="div__h2-p">
+                        <h2 class = "products-title-especial">
+                            <%= nombreProducto %>
+                        </h2>
+
+                        <p class="product-detail-description">
+                            <a class="product-detail-a" href="/product/add">Editar</a>
+
+                        </p>
+                    </div>
+
+                    <p class="product-detail-description">
+                        <%= descripcion %>
+                    </p>
+
+                    <% for (let i=0; i < 3; i++ ) { %>
                     <article>
                         <img src="<%= comment[i].imagenPerfilC %>" alt="">
                         <div class="data">
@@ -35,13 +49,15 @@
                 </section>
                 <form class="form" action="" method="POST">
                     <input class="form-input" type="text" value="" placeholder="Agregar comentario">
-                    <button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+                    <button type="button" class="buy-now-button">AGREGAR COMENTARIO</button>
                 </form>
                 <hr>
             </div>
         </div>
     </div>
 </div>
+
+
 <!-- /product detail -->
     <%- include('./partials/footer') %>
 </body>
