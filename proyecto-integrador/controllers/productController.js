@@ -24,39 +24,36 @@ const productController = {
         return res.render('product-add');
     },
 
-    search: function(req,res) {
+    search: function(req, res) {
         let nombreProducto = req.query.nombreProducto; 
-        let id = req.params.nombreProducto;
         let results = [];
-        
-        if (nombreProducto) {
-            return res.redirect(`/product/search/${nombreProducto}`);
-        } else {
-            return res.render("search-results", {
-                mensaje: "No se encontraron resultados para"
-            });
-        }
-
-        for(let i=0; i < db.productos.length; i++){
-            if(id == db.productos.nombreProducto){
+        let id = req.params.nombreProducto;
+    
+        for (let i = 0; i < db.productos.length; i++) {
+            if (id == db.productos[i].nombreProducto) {
                 results.push(db.productos[i]);
             }
         }
-        
-        if(results.length != 0){
-            return res.render('search-results', {
-                index: db.productos,
-                imagen: `${db.productos[i].imagen}`,
-                descripcion: `${db.productos[i].descripcion}`,
-                nombreProducto: `${db.productos[i].nombreProducto}`,
-                id: `${db.productos[i].id}`,
-            });
+    
+        if (!nombreProducto) {
+            if (results.length > 0) {
+                return res.render('search-results', {
+                    index: results.map(result => ({
+                        imagen: result.imagen,
+                        descripcion: result.descripcion,
+                        nombreProducto: result.nombreProducto,
+                        id: result.id
+                    }))
+                });
+            } else {
+                return res.render("search-results", {
+                    mensaje: "No se encontraron resultados para"
+                });
+            }
         } else {
-            return res.render('product', {
-                mensaje: "No se encontraron resultados para"
-            });
+            return res.redirect(`/product/search-results/${id}`);
         }
     }
-};
+}
 
 module.exports = productController;
