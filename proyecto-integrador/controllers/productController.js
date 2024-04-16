@@ -26,6 +26,9 @@ const productController = {
 
     search: function(req,res) {
         let nombreProducto = req.query.nombreProducto; 
+        let id = req.params.nombreProducto;
+        let results = [];
+        
         if (nombreProducto) {
             return res.redirect(`/product/search/${nombreProducto}`);
         } else {
@@ -34,8 +37,6 @@ const productController = {
             });
         }
 
-        let id = req.params.nombreProducto;
-        let results = [];
         for(let i=0; i < db.productos.length; i++){
             if(id == db.productos.nombreProducto){
                 results.push(db.productos[i]);
