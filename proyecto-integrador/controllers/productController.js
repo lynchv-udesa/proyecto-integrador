@@ -31,19 +31,19 @@ const productController = {
     
         for (let i = 0; i < db.productos.length; i++) {
             if (id == db.productos[i].nombreProducto) {
-                results.push(db.productos[i]);
+                results.push({
+                    imagen: db.productos[i].imagen,
+                    descripcion: db.productos[i].descripcion,
+                    nombreProducto: db.productos[i].nombreProducto,
+                    id: db.productos[i].id
+                });
             }
         }
     
         if (!nombreProducto) {
             if (results.length > 0) {
                 return res.render('search-results', {
-                    index: results.map(result => ({
-                        imagen: result.imagen,
-                        descripcion: result.descripcion,
-                        nombreProducto: result.nombreProducto,
-                        id: result.id
-                    }))
+                    index: results
                 });
             } else {
                 return res.render("search-results", {
