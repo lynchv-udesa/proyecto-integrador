@@ -10,21 +10,22 @@
 				<h2 class="products-title">Resultados de búsqueda</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
+			<% for( let i = 0; i < index.length; i++ ) { %>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">	
-					<a href="/product/<%= id %>">
+					<a href="/product/<%= index[i].id %>">
 						<figure class="product-box_image">
-							<img src="<%= imagen %>" alt="">
+							<img src="<%= index[i].imagen %>" alt="">
 						</figure>
 						<article class="product-box_data">
-							<h2><%= nombreProducto %></h2>
-							<p><%= descripcion %></p>
+							<h2><%= index[i].nombreProducto %></h2>
+							<p><%= index[i].descripcion %></p>
 							<p>Comentarios: 3</p>
 						</article>
 					</a>
-					
 				</section>
 			</div>
+			<% } %>
 			
     <%- include('./partials/footer') %>
 </body>
