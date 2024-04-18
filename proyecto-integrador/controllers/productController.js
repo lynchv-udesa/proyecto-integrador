@@ -21,7 +21,9 @@ const productController = {
 
 
     add: function(req, res) {
-        return res.render('product-add');
+        return res.render('product-add',{
+            nombreUsuario: `${db.usuario[1].nombreUsuario}`
+        });
     },
 
 

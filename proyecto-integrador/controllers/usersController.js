@@ -3,24 +3,20 @@ let db = require("../db/index");
 const usersController = {
 
     profile: function(req,res){
-        for(let i=0; i < 1; i++){
                 return res.render('profile', {
-                    index: db.usuario,
-                    fotoPerfil: `${db.usuario[i].fotoPerfil}`,
-                    nombreUsuario: `${db.usuario[i].nombreUsuario}`,
+                    index: db.productos,
+                    fotoPerfil: `${db.usuario[1].fotoPerfil}`,
+                    nombreUsuario: `${db.usuario[1].nombreUsuario}`,
                 })
-            }
+            
         },
 
     edit: function(req,res){
-        return res.render('profile-edit');
+        return res.render('profile-edit', {
+            nombreUsuario: `${db.usuario[1].nombreUsuario}`
+        });
+
     },
-
-    getNombreUsuario: function(){
-        
-        return db.usuario[0].nombreUsuario;
-    }
-
 
 }
 

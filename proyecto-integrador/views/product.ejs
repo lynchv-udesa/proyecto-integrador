@@ -31,7 +31,7 @@
                             <img src="<%= comment[i].imagenPerfilC %>" alt="">
                             <div class="data">
                                 <p class="user">
-                                    <strong> <a class="product-detail-a" href="/profile">
+                                    <strong> <a class="product-detail-a" href="/users/profile">
                                             <%= comment[i].nombreUsuarioC %>
                                         </a> </strong>
                                     <%= comment[i].textoC %>
@@ -40,9 +40,9 @@
                         <% } %>
 
 
-                <form class="form" action="" method="POST">
+                <form class="form" action="/" method="GET">
                     <input class="form-input" type="text" value="" placeholder="Agregar comentario">
-                    <button type="button" class="buy-now-button">AGREGAR COMENTARIO</button>
+                    <button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
                 </form>
                 <hr>
             </div>
