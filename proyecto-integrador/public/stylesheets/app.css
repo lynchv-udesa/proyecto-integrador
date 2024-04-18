@@ -667,3 +667,7 @@ header {
 .uk-link-toggle:hover .uk-link, .uk-link:hover, a:hover {
   text-decoration: none !important;
 }
+
+.mainRegister {
+  padding-top: 10em;
+}

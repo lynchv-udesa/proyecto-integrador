@@ -24,10 +24,11 @@ const productController = {
         return res.render('product-add');
     },
 
+
     search: function(req,res) {
         const search = req.query.search;
         if(search){
-            return res.redirect(/product/search/${search})
+            return res.redirect(`/product/search/${search}`)
         } else {
             return res.render("product-add")
             }
@@ -50,8 +51,9 @@ const productController = {
                 index: resultado
 
             })
-        }
-    }
+        }
+    }
 }
+
 
 module.exports = productController;

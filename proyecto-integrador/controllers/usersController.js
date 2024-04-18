@@ -16,10 +16,9 @@ const usersController = {
         return res.render('profile-edit');
     },
 
-    getNombreUsuario: function(req,res){
-        return res.render('headerLogueado', {
-            nombreUsuario: `${db.usuario[1].nombreUsuario}`,
-        } )
+    getNombreUsuario: function(){
+        
+        return db.usuario[0].nombreUsuario;
     }
 
 

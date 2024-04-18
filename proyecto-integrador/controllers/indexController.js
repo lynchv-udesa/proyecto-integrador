@@ -17,7 +17,6 @@ const indexController = {
     },
 
 
-    
     producto: function(req,res){
         let id = req.params.nombreProducto;
         let results = [];
