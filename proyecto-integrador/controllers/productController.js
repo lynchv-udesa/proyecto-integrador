@@ -22,7 +22,8 @@ const productController = {
 
     add: function(req, res) {
         return res.render('product-add',{
-            nombreUsuario: `${db.usuario[1].nombreUsuario}`
+            nombreUsuario: `${db.usuario[1].nombreUsuario}`,
+            mensaje: "Agregue el producto"
         });
     },
 
@@ -32,7 +33,7 @@ const productController = {
         if(search){
             return res.redirect(`/product/search/${search}`)
         } else {
-            return res.render("product-add")
+            return res.render("search-results")
             }
         },
 
@@ -47,10 +48,14 @@ const productController = {
         }
 
         if (resultado.length == 0){
-            return res.render("product-add")
+            return res.render("search-results",{
+                index: resultado,
+                mensaje: "No se encontraron resultados"
+            })
         } else{
             return res.render("search-results",{
-                index: resultado
+                index: resultado,
+                mensaje: "Resultados de la busqueda"
 
             })
         }

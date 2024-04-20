@@ -143,7 +143,28 @@ hr {
   padding-left: 0;
 }
 
+.button-logueado{
+  color: #EDDACE;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 0.9rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
 
+.button-logueado:hover {
+  color: #A1948C;
+}
+
+.logueado{
+  padding-left: 4em;
+}
+
+.l{
+  gap: 0 !important;
+}
 
 /*====== Banner ======*/
 .banner {
@@ -156,6 +177,10 @@ hr {
 
 
 /*====== Products ======*/
+.row{
+  justify-content: center;
+}
+
 .div__h2-p{
   display: flex;
   align-items: center;
@@ -171,7 +196,7 @@ hr {
 .details{
   margin-top: 0;
   margin-bottom: -5em;
-  padding: 10em 0 0 0;
+  padding: 12em 0 0 0;
 }
 
 .products-title {
@@ -285,14 +310,17 @@ hr {
   padding: 20px 0;
   margin-top: 80px;
 }
+h5{
+  color: #A1948C !important;
+}
 
 .footer-data {
   text-align: center;
 }
 
 .footer-data i {
-  color: var(--light-blue);
-  font-size: 3.5em;
+  color: #C4A48C;
+  font-size: 3em;
 }
 
 .footer-data h2 {
@@ -462,23 +490,85 @@ hr {
 }
 
 /*====== Formularios ======*/
+.container__form {
+  margin: auto;
+  width: 400px;
+  background-color: #1C140C;
+  border-radius: 10px;
+}
+.contenedor-input {
+  margin-top: -20px;
+}
+
+.form {
+  margin: auto;
+}
+
+.form-data{
+  width: 75%;
+  margin: auto;
+}
+
 .form-label {
   display: inline-block;
-  font-size: 1.6em;
+  font-size: 1em;
+  color: #fff;
   margin: 10px 0;
 }
 
-.form-input {
+.form-file{
+  margin: 10px 0;
+}
+
+.form-input__checkbox{
+  display: block;
+  width: 15%;
+  height: 20px;
+  border: none;
+  color: #1C140C;
+}
+
+.form-input__button{
+  cursor: pointer;
   display: block;
   width: 100%;
   height: 45px;
   margin-bottom: 15px;
-  font-size: 0.9em;
+  font-size: 0.7em;
+  border-radius: 8px;
+  border: none;
+  border: solid 1px var(--gray);
+  padding: 0 15px;
+  background-color: #EDDACE;
+}
+
+.form-input__button:hover{
+  background-color: #C4A48C;
+}
+
+
+
+
+
+
+.form-input {
+  background-color: #EDDACE;
+  display: block;
+  width: 100%;
+  height: 45px;
+  margin-bottom: 15px;
+  font-size: 0.7em;
   border-radius: 8px;
   border: none;
   border: solid 1px var(--gray);
   padding: 0 15px;
 
+}
+.contenedor-input__checkbox{
+  display:flex;
+  padding-bottom: 1.5em;
+  align-items: center;
+  margin-top: -10px;
 }
 
 .error{
@@ -495,20 +585,53 @@ textarea.form-input {
 /*====== Profile ======*/
 .info-usuario{
   border-bottom: 1px solid #ccc;
-  padding-bottom: 30px;
+  padding-bottom: 10em;
   font-size: 16px;
 }
 
 .foto-perfil{
   border-radius: 50%;
+  width: 75%;
 }
 
 .main-title{
   font-size: 25px;
   margin-bottom: 10px;
 }
+.main-title-profile{
+  font-size: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.profile-ul{
+  padding-top: 2em;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0;
+}
+
+.profile-li{
+  margin-right: 1em;
+}
+
+.profile-a{
+  color: #A1948C;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  margin-right: 1em;
+}
+
+.profile-a:hover{
+  color: #756C66;
+}
+
+
 
 .btn{
+  margin: 0 !important;
   padding: 10px 20px;
   border-radius: 4px;
   color: #fff;
@@ -669,5 +792,11 @@ header {
 }
 
 .mainRegister {
-  padding-top: 10em;
+  padding-top: 11em;
+}
+
+.details__search{
+  margin-top: 0;
+  margin-bottom: -2em;
+  padding: 10em 0 0 0;
 }

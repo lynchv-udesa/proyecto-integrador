@@ -1,45 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
-    <%- include('./partials/head') %>
-<body>
-    <%- include('./partials/header') %>
-    	<!-- Novedades -->
-		<main class="mainRegister"></main>
-		<form action="" method="get"> 
+<%- include('./partials/head') %>
 
-			<h3>Usuario</h3>
-			<div class="contenedor-input">
-		
-				<label for="miEmail"></label>
-				<input type="email" name="email" id="miEmail" value=""> 
+	<body>
+		<%- include('./partials/header') %>
+			<!-- Novedades -->
+			<main class="mainRegister"></main>
+			<div class="col-12">
+				<h2 class="products-title">Inicia sesión</h2>
 			</div>
+			<div class="container__form">
+				<img src="/images/logo.png" alt="">
+				<form class="form-data" action="/users/profile" method="get">
+					<div class="contenedor-input">
+						<input class="form-input" type="email" placeholder="Correo eletrónico" required>
+						<label class="form-label" for="nombreDeUsuario"></label>
+					</div>
 
-			<h3>Contraseña</h3>            
-			<div class="contenedor-input">
+					<div class="contenedor-input">
+						<input class="form-input" type="password" placeholder="Contraseña" required>
+						<label class="form-label" for="contraseña"></label>
+					</div>
 
-				<label for="miContra"></label>
-				<input type="password" name="password" id="miContra" value=""> 
-
+					<div class="contenedor-input__checkbox">
+						<input class="form-input__checkbox" type="checkbox" value="Recordarme">
+						<label class="form-label" for="recordarme">Recordarme</label>
+					</div>
+					<div class="contenedor-input1">
+						<input class="form-input__button" type="submit" value="Iniciar sesion">
+						<label class="form-label" for="iniciarSesión"></label>
+					</div>
+				</form>
 			</div>
+			</main>
 
-			<h3>Recordarme</h3>            
-			<div class="contenedor-input">
-				<label for="Recordarme"></label>
-				<input type="checkbox" value="Recordarme">
-
-			</div>
-
-
-			<div class="contenedor-input1">
-				<label for="Registrar"></label>
-				<input type="button" value="Registrarme">
-			
-				<label for="Cancelar"></label>
-				<input type="reset" value="Cancelar">
-			</div>
-		</form>
-	</main>
-
-    <%- include('./partials/footer') %>
-</body>
+			<%- include('./partials/footer') %>
+	</body>
+	<script src="/js/uikit.min.js"></script>
+	<script src="/js/header-scroll.js"></script>
 </html>

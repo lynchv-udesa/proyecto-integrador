@@ -5,13 +5,13 @@
     <nav class="nav__header">
         <a href="/"><img class="nav__img" src="/images/logo.png" alt="Company logo"></a>
         <div>
-            <ul class="ul-navbar-center">
+            <ul class="ul-navbar-center logueado">
                 <li class="nav__ul-li"><a class="ul__li-a" href="/">TODOS LOS PRODUCTOS</a></li>
                 <li class="nav__ul-li"><a class="ul__li-a" href="/product/add">AGREGAR PRODUCTOS</a></li>
             </ul>
         </div>
         <div>
-            <ul class="uk-navbar-right">
+            <ul class="uk-navbar-right l">
                 <li class="nav__ul-li">
                     <a class="uk-navbar-toggle" href uk-search-icon></a>
                     <div class="uk-drop" uk-drop="mode: click; pos: left-center; offset: 0">
@@ -23,13 +23,13 @@
                         </div>
                     </div>
                 </li>
-                <li><a href="/users/profile">
+                <li class="nav__ul-li"><a class="ul__li-a" href="/users/profile">
                     <%= nombreUsuario %> <i class="fas fa-user"></i>
                     </a>
                 </li>
-                <li>
+                <li class="nav__ul-li">
                     <form action="/" method="get">
-                        <button class="logout" type="submit">
+                        <button class="button-logueado" class="logout" type="submit">
                             Cerrar sesión <i class="fas fa-sign-in-alt"></i>
                         </button>
                     </form>

@@ -4,71 +4,47 @@
 <body>
     <%- include('./partials/header') %>
 	<!-- Novedades -->
-	<div class="products-wrapper details">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Registrate</h2>
-			</div>
-			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>
-				<form action="" method="get"> 
-
-					<h3>Email</h3>
-					<div class="contenedor-input">
-				
-						<label for="miEmail"></label>
-						<input type="email" name="email" id="miEmail" value=""> 
-					</div>
-
-					<h3>Usuario</h3>
-					<div class="contenedor-input">
-					
-						<label for="miNombre"></label>
-						<input type="text" name="Nombre" id="miNombre" value="">
-					</div>
-		
-					<h3>Contraseña</h3>            
-					<div class="contenedor-input">
-		
-						<label for="miContra"></label>
-						<input type="password" name="password" id="miContra" value=""> 
-
-					</div>
-
-					<h3>Fecha de nacimiento</h3>
-					<div class="contenedor-input">
-					
-						<label for="miFecha"></label>
-						<input type="number" name="Fecha" id="miFecha" value="">
-					</div>
-
-					<h3>Nro de documento</h3>
-					<div class="contenedor-input">
-					
-						<label for="miDNI"></label>
-						<input type="number" name="DNI" id="miDNI" value="">
-					</div>
-
-					<h3>Usuario</h3>
-					<div class="contenedor-input">
-					
-						<label for="miNombre"></label>
-						<input type="text" name="Nombre" id="miNombre" value="">
-					</div>
-
-					<div class="contenedor-input1">
-						<label for="Registrar"></label>
-						<input type="button" value="Registrarme">
-					
-						<label for="Cancelar"></label>
-						<input type="reset" value="Cancelar">
-					</div>
-				</form>
-			
-			</h2>
-
-		</div>
+	<main class="mainRegister"></main>
+	<div class="col-12">
+		<h2 class="products-title">Registrate</h2>
 	</div>
+	<div class="container__form">
+		<img src="/images/logo.png" alt="">
+		<form class="form-data" action="/login" method="get">
+			<div class="contenedor-input">
+				<input class="form-input" type="email" placeholder="Correo eletrónico" required>
+				<label class="form-label" for="email"></label>
+			</div>
+
+			<div class="contenedor-input">
+				<input class="form-input" type="text" placeholder="Usuario" required>
+				<label class="form-label" for="nombreDeUsuario"></label>
+			</div>
+
+			<div class="contenedor-input">
+				<input class="form-input" type="password" placeholder="Contraseña" required>
+				<label class="form-label" for="contraseña"></label>
+			</div>
+
+			<div class="contenedor-input">
+				<input class="form-input" type="date" placeholder="Fecha de nacimiento" required>
+				<label class="form-label" for="fecha"></label>
+			</div>
+			
+			<div class="contenedor-input">
+				<input class="form-input" type="number" placeholder="Numero de documento" required>
+				<label class="form-label" for="documento"></label>
+			</div>
+
+			<div class="contenedor-input1">
+				<input class="form-input__button" type="submit" value="Registrarme">
+				<label class="form-label" for="registrarme"></label>
+			</div>
+		</form>
+	</div>
+	</main>
     <%- include('./partials/footer') %>
 </body>
+<script src="/js/uikit.min.js"></script>
+<script src="/js/header-scroll.js"></script>
 </html>
