@@ -1,59 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
-    <%- include('./partials/head') %>
+<%- include('./partials/head') %>
 
     <body id="body__product">
 
-    <%- include('./partials/header') %>
-<!-- product detail -->
-<div class="products-wrapper details">
-    <div class="product-detail">
-        <div class="row">
-            <article class="col-12 col-lg-8 product-detail-info">
-                <img src="<%= imagen %>" alt="" class="product-detail-img">
-            </article>
-
-            <div class="col-12 col-lg-4">
-                <section class="comments">
-                    <div class="div__h2-p">
-                        <h2 class="products-title_especial">
-                            <%= nombreProducto %>
-                        </h2>
-                        <p class="product-detail-description">
-                            <a class="product-detail-a" href="/product/add">Editar</a>
-                        </p>
-                    </div>
-                    <p class="product-detail-description-p">
-                        <%= descripcion %>
-                    </p>
-                    <% for (let i=0; i < 3; i++ ) { %>
-                        <article>
-                            <img src="<%= comment[i].imagenPerfilC %>" alt="">
-                            <div class="data">
-                                <p class="user">
-                                    <strong> <a class="product-detail-a" href="/users/profile">
-                                            <%= comment[i].nombreUsuarioC %>
-                                        </a> </strong>
-                                    <%= comment[i].textoC %>
-                            </div>
+        <%- include('./partials/header') %>
+            <!-- product detail -->
+            <div class="products-wrapper details">
+                <div class="product-detail">
+                    <div class="row">
+                        <article class="col-12 col-lg-8 product-detail-info">
+                            <img src="<%= imagen %>" alt="" class="product-detail-img">
                         </article>
-                        <% } %>
+
+                        <div class="col-12 col-lg-4">
+                            <section class="comments">
+                                <div class="div__h2-p">
+                                    <h2 class="products-title_especial">
+                                        <%= nombreProducto %>
+                                    </h2>
+                                    <p class="product-detail-description">
+                                        <a class="product-detail-a" href="/product/add">Editar</a>
+                                    </p>
+                                </div>
+                                <p class="product-detail-description-p">
+                                    <%= descripcion %>
+                                </p>
+                                <% for (let i=0; i < 3; i++ ) { %>
+                                    <article>
+                                        <img src="<%= comment[i].imagenPerfilC %>" alt="">
+                                        <div class="data">
+                                            <p class="user">
+                                                <strong> <a class="product-detail-a" href="/users/profile">
+                                                        <%= comment[i].nombreUsuarioC %>
+                                                    </a> </strong>
+                                                <%= comment[i].textoC %>
+                                        </div>
+                                    </article>
+                                    <% } %>
 
 
-                <form class="form" action="/" method="GET">
-                    <input class="form-input" type="text" value="" placeholder="Agregar comentario">
-                    <button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
-                </form>
-                <hr>
+                                        <form class="form" action="/" method="GET">
+                                            <input class="form-input" type="text" value=""
+                                                placeholder="Agregar comentario">
+                                            <button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+                                        </form>
+                                        <hr>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
 
 
-<!-- /product detail -->
-    <%- include('./partials/footer') %>
-</body>
-<script src="/js/uikit.min.js"></script>
-<script src="/js/header-scroll.js"></script>
+            <!-- /product detail -->
+            <%- include('./partials/footer') %>
+    </body>
+    <script src="/js/uikit.min.js"></script>
+    <script src="/js/header-scroll.js"></script>
+
 </html>

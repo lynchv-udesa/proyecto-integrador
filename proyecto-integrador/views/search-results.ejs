@@ -7,7 +7,9 @@
 			<!-- Novedades -->
 			<div class="products-wrapper details__search">
 				<div class="col-12">
-					<h2 class="products-title"><%= mensaje %></h2>
+					<h2 class="products-title">
+						<%= mensaje %>
+					</h2>
 				</div>
 				<!-- Show the "ultimos" products -->
 				<% for( let i=0; i < index.length; i++ ) { %>
@@ -34,6 +36,6 @@
 			<%- include('./partials/footer') %>
 	</body>
 	<script src="/js/uikit.min.js"></script>
-<script src="/js/header-scroll.js"></script>
+	<script src="/js/header-scroll.js"></script>
 
 </html>

@@ -1,50 +1,52 @@
 <!DOCTYPE html>
 <html lang="es">
-    <%- include('./partials/head') %>
-<body>
-    <%- include('./partials/header') %>
-	<!-- Novedades -->
-	<main class="mainRegister"></main>
-	<div class="col-12">
-		<h2 class="products-title">Registrate</h2>
-	</div>
-	<div class="container__form">
-		<img src="/images/logo.png" alt="">
-		<form class="form-data" action="/login" method="get">
-			<div class="contenedor-input">
-				<input class="form-input" type="email" placeholder="Correo eletrónico" required>
-				<label class="form-label" for="email"></label>
-			</div>
+<%- include('./partials/head') %>
 
-			<div class="contenedor-input">
-				<input class="form-input" type="text" placeholder="Usuario" required>
-				<label class="form-label" for="nombreDeUsuario"></label>
+	<body>
+		<%- include('./partials/header') %>
+			<!-- Novedades -->
+			<main class="mainRegister"></main>
+			<div class="col-12">
+				<h2 class="products-title">Registrate</h2>
 			</div>
+			<div class="container__form">
+				<img src="/images/logo.png" alt="">
+				<form class="form-data" action="/login" method="get">
+					<div class="contenedor-input">
+						<input class="form-input" type="email" placeholder="Correo eletrónico" required>
+						<label class="form-label" for="email"></label>
+					</div>
 
-			<div class="contenedor-input">
-				<input class="form-input" type="password" placeholder="Contraseña" required>
-				<label class="form-label" for="contraseña"></label>
-			</div>
+					<div class="contenedor-input">
+						<input class="form-input" type="text" placeholder="Usuario" required>
+						<label class="form-label" for="nombreDeUsuario"></label>
+					</div>
 
-			<div class="contenedor-input">
-				<input class="form-input" type="date" placeholder="Fecha de nacimiento" required>
-				<label class="form-label" for="fecha"></label>
-			</div>
-			
-			<div class="contenedor-input">
-				<input class="form-input" type="number" placeholder="Numero de documento" required>
-				<label class="form-label" for="documento"></label>
-			</div>
+					<div class="contenedor-input">
+						<input class="form-input" type="password" placeholder="Contraseña" required>
+						<label class="form-label" for="contraseña"></label>
+					</div>
 
-			<div class="contenedor-input1">
-				<input class="form-input__button" type="submit" value="Registrarme">
-				<label class="form-label" for="registrarme"></label>
+					<div class="contenedor-input">
+						<input class="form-input" type="date" placeholder="Fecha de nacimiento" required>
+						<label class="form-label" for="fecha"></label>
+					</div>
+
+					<div class="contenedor-input">
+						<input class="form-input" type="number" placeholder="Numero de documento" required>
+						<label class="form-label" for="documento"></label>
+					</div>
+
+					<div class="contenedor-input1">
+						<input class="form-input__button" type="submit" value="Registrarme">
+						<label class="form-label" for="registrarme"></label>
+					</div>
+				</form>
 			</div>
-		</form>
-	</div>
-	</main>
-    <%- include('./partials/footer') %>
-</body>
-<script src="/js/uikit.min.js"></script>
-<script src="/js/header-scroll.js"></script>
+			</main>
+			<%- include('./partials/footer') %>
+	</body>
+	<script src="/js/uikit.min.js"></script>
+	<script src="/js/header-scroll.js"></script>
+
 </html>
