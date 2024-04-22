@@ -1,40 +1,41 @@
-	<!-- Header -->
-	<header>
-        <div class="header__div">
-            <span class="div__span">ENVÍOS A TODO EL PAIS</span>
+<!-- Header -->
+<header>
+    <div class="header__div">
+        <span class="div__span">ENVÍOS A TODO EL PAIS</span>
+    </div>
+    <nav class="nav__header">
+        <a href="/"><img class="nav__img" src="/images/logo.png" alt="Company logo"></a>
+        <div>
+            <ul class="ul-navbar-center">
+                <li class="nav__ul-li"><a class="ul__li-a" href="/">TODOS LOS PRODUCTOS</a></li>
+                <li class="nav__ul-li"><a class="ul__li-a" href="/product/add">AGREGAR PRODUCTOS</a></li>
+            </ul>
         </div>
-        <nav class="nav__header">
-            <a href="/"><img class="nav__img" src="/images/logo.png" alt="Company logo"></a>
-            <div>
-                <ul class="ul-navbar-center">
-                    <li class="nav__ul-li"><a class="ul__li-a" href="/">TODOS LOS PRODUCTOS</a></li>
-                    <li class="nav__ul-li"><a class="ul__li-a" href="/product/add">AGREGAR PRODUCTOS</a></li>
-                </ul>
-            </div>
-            <button class="btn-toggle-navbar">
-				<i class="fas fa-bars"></i>
-			</button>
-            <div>
-                <ul class="uk-navbar-right">
-                    <li class="nav__ul-li">
-                        <a class="uk-navbar-toggle" href uk-search-icon></a>
-                        <div class="uk-drop" uk-drop="mode: click; pos: left-center; offset: 0">
-                            <div class="uk-search uk-search-navbar uk-width-1-1">
-                                <form class="uk-search-input" action="/product/search/" method="get">
-                                    <input class="uk-search-input" type="search" name="search" placeholder="search" aria-label="Search" autofocus>
-                                </form>
-                            </div>
+        <button class="btn-toggle-navbar">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div>
+            <ul class="uk-navbar-right">
+                <li class="nav__ul-li">
+                    <a class="uk-navbar-toggle" href uk-search-icon></a>
+                    <div class="uk-drop" uk-drop="mode: click; pos: left-center; offset: 0">
+                        <div class="uk-search uk-search-navbar uk-width-1-1">
+                            <form class="uk-search-input" action="/product/search/" method="get">
+                                <input class="uk-search-input" type="search" name="search" placeholder="search"
+                                    aria-label="Search" autofocus>
+                            </form>
                         </div>
-                    </li>
-                    <li class="nav__ul-li">
-                        <a class="ul__li-a" href="/register"><i class="far fa-address-card"></i>
-                        </a>
-                    </li>
-                    <li class="nav__ul-li">
-                        <a class="ul__li-a" href="/login"><i class="fas fa-sign-in-alt"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-	<!-- /Header -->
+                    </div>
+                </li>
+                <li class="nav__ul-li">
+                    <a class="ul__li-a" href="/register"><i class="far fa-address-card"></i>
+                    </a>
+                </li>
+                <li class="nav__ul-li">
+                    <a class="ul__li-a" href="/login"><i class="fas fa-sign-in-alt"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<!-- /Header -->
