@@ -7,6 +7,10 @@ module.exports = function (sequelize, datatypes) {
             primaryKey: true,
             type: datatypes.INTEGER
         },
+        nombre: {
+            type: datatypes.STRING,
+            allowNull: false
+        },
         imagen: {
             type: datatypes.STRING,
             allowNull: false
