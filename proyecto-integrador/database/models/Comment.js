@@ -33,6 +33,12 @@ Comment.associate = function (models) {
     Comment.belongsTo(models.Product, {
         as: "productos",
         foreignKey: "idProducto",
+        timestamps: false
+    }),
+    Comment.belongsTo(models.User, {
+        as: "user",
+        foreignKey: "idUsuarioC",
+        timestamps: false
     })
 }
 

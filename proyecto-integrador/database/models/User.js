@@ -6,7 +6,7 @@ module.exports = function(sequelize, datatypes){
         id: {
             autoIncrement: true,
             primaryKey: true,
-            type: dataTypes.INTERGER,
+            type: dataTypes.INTEGER,
         },
         createdAt: {
             type: dataTypes.DATE,
@@ -16,22 +16,22 @@ module.exports = function(sequelize, datatypes){
             type: dataTypes.DATE,
             allowNull: true,
         },
-        name: {
+        nombreUsuario: {
             type: dataTypes.STRING,
         },
         email: {
             type: dataTypes.STRING,
         },
-        password: {
+        contrasenia: {
             type: dataTypes.STRING,
         },
-        birthDate: {
+        fechaNacimiento: {
             type: dataTypes.DATE,
         },
         dni: {
-            type: dataTypes.INTERGER,
+            type: dataTypes.INTEGER,
         },
-        profilePic: {
+        fotoPerfil: {
             type: dataTypes.STRING,
         },
     };
@@ -48,13 +48,13 @@ module.exports = function(sequelize, datatypes){
 
     User.associate = function(models){
         User.hasMany(models.Product, {
-            as: "products",
-            foreignKey: " ",
+            as: "productos",
+            foreignKey: "idUsuario",
             timestamps: false,
         }),
         User.hasMany(models.Comment, {
-            as: "comments",
-            foreignKey: " ",
+            as: "comentarios",
+            foreignKey: "idUsuarioC",
             timestamps: false
         })
     }

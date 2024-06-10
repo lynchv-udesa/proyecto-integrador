@@ -5,41 +5,59 @@
 	<body>
 		<%- include('./partials/header') %>
 			<!-- Novedades -->
-			<main class="mainRegister"></main>
+		<main class="mainRegister"></main>
 			<div class="col-12">
 				<h2 class="products-title">Registrate</h2>
 			</div>
 			<div class="container__form">
 				<img src="/images/logo.png" alt="">
-				<form class="form-data" action="/login" method="get">
+				<form class="form-data" action="/login" method="post">
 					<div class="contenedor-input">
-						<input class="form-input" type="email" name="email" placeholder="Correo eletrónico" required>
 						<label class="form-label" for="email"></label>
+						<input class="form-input" type="email" name="email" placeholder="Correo eletrónico" value="<%= locals.oldData && oldData.email ? oldData.email : null %>">
+						<% if(locals.errors && errors.email) { %>
+							<div class="error-msg"><%= errors.email.msg %></div>
+						<% } %>
+						
 					</div>
 
 					<div class="contenedor-input">
-						<input class="form-input" type="text" name="user" placeholder="Usuario" required>
-						<label class="form-label" for="user"></label>
+						<label class="form-label" for="nombreUsuario"></label>
+						<input class="form-input" type="text" name="nombreUsuario" placeholder="Usuario" value="<%= locals.oldData && oldData.nombreUsuario ? oldData.nombreUsuario : null %>">
+						<% if(locals.errors && errors.nombreUsuario) { %>
+							<div class="error-msg"><%= errors.nombreUsuario.msg %></div>
+						<% } %>
+						
 					</div>
 
 					<div class="contenedor-input">
-						<input class="form-input" type="password" name="password" placeholder="Contraseña" required>
-						<label class="form-label" for="password"></label>
+						<label class="form-label" for="contrasenia"></label>
+						<input class="form-input" type="password" name="contrasenia" placeholder="Contraseña" value="">
+						<% if(locals.errors && errors.contrasenia) { %>
+							<div class="error-msg"> <%= errors.contrasenia.msg %></div>
+						<% } %>
+						
 					</div>
 
 					<div class="contenedor-input">
-						<input class="form-input" type="date" name="birthDate" placeholder="Fecha de nacimiento" required>
-						<label class="form-label" for="birthDate"></label>
+						<label class="form-label" for="fechaNacimiento"></label>
+						<input class="form-input" type="date" name="fechaNacimiento" placeholder="Fecha de nacimiento" >
+						
 					</div>
 
 					<div class="contenedor-input">
-						<input class="form-input" type="number" name="dni" placeholder="Numero de documento" required>
 						<label class="form-label" for="dni"></label>
+						<input class="form-input" type="number" name="dni" placeholder="Numero de documento" >
+						
 					</div>
 
 					<div class="contenedor-input">
-						<input class="form-input" type="text" name="profilePic" placeholder="Foto" required>
-						<label class="form-label" for="profilePic"></label>
+						<label class="form-label" for="fotoPerfil"></label>
+						<input class="form-input" type="text" name="fotoPerfil" placeholder="Foto" value="<%= locals.oldData && oldData.fotoPerfil ? oldData.fotoPerfil : null %>">
+						<% if(locals.errors && errors.fotoPerfil) { %>
+							<div class="error-msg"> <%= errors.fotoPerfil.msg %></div>
+						<% } %>
+						
 					</div>
 
 					<div class="contenedor-input1">
@@ -48,7 +66,7 @@
 					</div>
 				</form>
 			</div>
-			</main>
+		</main>
 			<%- include('./partials/footer') %>
 	</body>
 	<script src="/js/uikit.min.js"></script>

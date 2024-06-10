@@ -1,4 +1,9 @@
-let db = require('../db/index');
+//let db = require('../db/index');
+const db = require("../database/models");
+const op = db.Sequelize.Op;
+const product = db.Product;
+const comentario = db.Comment;
+
 
 const productController = {
 
@@ -28,14 +33,31 @@ const productController = {
     },
 
 
-    search: function (req, res) {
-        const search = req.query.search;
-        if (search) {
-            return res.redirect(`/product/search/${search}`)
-        } else {
-            return res.render("search-results")
-        }
+   // search: function (req, res) {
+     //   const search = req.query.search;
+       // if (search) {
+        //    return res.redirect(`/product/search/${search}`)
+        //} else {
+          //  return res.render("search-results")
+     //   }
+   // },
+
+    search: function (req, res){
+        const query = req.query.serach;
+        product.findAll({
+            where: {
+                nombre: {[db.Sequelize.Op.like]: `%${query}`},
+                descripcion: {[db.Sequelize.Op.like]: `%${query}`},
+            }
+        })
+        .then(function(data){
+            res.render('search-results', { productos : data})
+        })
+        .catch(function(error){
+            console.log(error)
+           })
     },
+
 
     producto: function (req, res) {
         let producto = req.params.producto.toUpperCase();

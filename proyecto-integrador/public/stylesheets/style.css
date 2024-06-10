@@ -3,4 +3,8 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+.error-msg{    
+  color: #e70f37;
+  margin-top: 2%;
+}
 

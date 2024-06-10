@@ -6,20 +6,19 @@ const registerValidations = [
         .withMessage("Debes completar tu email")
         .bail()
         .isEmail().withMessage("Debes escribir un formato de correo valido"),
-    body("user")
+    body("nombreUsuario")
         .notEmpty()
         .withMessage("Debes completar tu nombre de usuario"),
-    body("password")
+    body("contrasenia")
         .notEmpty()
         .withMessage("Debes introducir un password")
         .bail()
         .isLength({min:8}).withMessage("El password debe tener minimo 8 caracteres"),
-    body("birthDate")
-        .optional()
-        .isDate({format: 'yyyy-mm-dd'}),
+    body("fechaNacimiento")
+        .optional(),
     body("dni")
         .optional(),
-    body("profilePic")
+    body("fotoPerfil")
         .notEmpty().withMessage("Debes ingresar el nombre de la imagen")
 
 ]

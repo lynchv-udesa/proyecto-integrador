@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
 const db = require('../database/models');
+const moment = require('moment')
 const {validationResults} = require('express-validator')
 
 let registerController = {
@@ -9,17 +10,28 @@ let registerController = {
     store: function(req,res) {
         const resultValidation = validationResults(req)
         if(!resultValidation.isEmpty()){
-            return res.render('register', {errors : resultValidation.mapped(), oldData : req.body})
-        } else {
+            return res.render('register', {
+                errors : resultValidation.mapped(), 
+                oldData : req.body});
+        } else { const formattedFechaNacimiento = moment(req.body.fechaNacimiento, 'YYYY-MM-DD').format('YYYY-MM-DD');
             const user = {
                 email: req.body.email,
-                user: req.body.user,
-                password: bcrypt.hashSync(req.body.password, 10),
-                birthDate: req.body.birthDate,
+                nombreUsuario: req.body.user,
+                contrasenia: bcrypt.hashSync(req.body.contrasenia, 10),
+                fechaNacimiento: formattedFechaNacimiento,
                 dni: req.body.dni,
-                profilePic: req.body.profilePic,
+                fotoPerfil: req.body.fotoPerfil,
             };
             db.User(user)
+                .create(user)
+                .then(function(user) {
+                    return res.redirect("/login");
+                })
+                .catch(function(error) {
+                    console.log("Error al guardar el usuario", error);
+                });
         }
     }
-}
+};
+
+module.exports = registerController;
