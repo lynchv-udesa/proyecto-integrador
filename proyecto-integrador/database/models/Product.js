@@ -20,14 +20,21 @@ module.exports = function (sequelize, datatypes) {
             allowNull: false
         },
     }
-    
+
     let config = {
-        tableName: 'productos', 
-        timestamps: true, 
+        tableName: 'productos',
+        timestamps: true,
         underscored: false,
     }
 
-   const Product = sequelize.define(alias, cols, config);
+    const Product = sequelize.define(alias, cols, config);
 
-   return Product;
+    Product.associate = function (models) {
+        Product.hasMany(models.Comment, {
+            as: "comentarios",
+            foreignKey: "idProducto",
+        })
+    }
+
+    return Product;
 }

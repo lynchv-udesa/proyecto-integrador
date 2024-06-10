@@ -1,4 +1,4 @@
-module.exports = function(sequelize, datatypes){
+module.exports = function (sequelize, datatypes) {
     let alias = "Comment";
 
     let cols = {
@@ -21,14 +21,19 @@ module.exports = function(sequelize, datatypes){
             allowNull: false
         },
     }
-    }
-    
-    let config = {
-        tableName: 'productos', 
-        timestamps: true, 
-        underscored: false,
-    }
+}
 
-   const Product = sequelize.define(alias, cols, config);
+let config = {
+    tableName: 'productos',
+    timestamps: true,
+    underscored: false,
+}
 
-   return Product;
+Comment.associate = function (models) {
+    Comment.belongsTo(models.Product, {
+        as: "productos",
+        foreignKey: "idProducto",
+    })
+}
+
+return Comment;
