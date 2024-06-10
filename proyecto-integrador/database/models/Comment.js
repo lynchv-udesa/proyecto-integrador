@@ -8,6 +8,10 @@ module.exports = function (sequelize, datatypes) {
             type: datatypes.INTEGER.UNSIGNED,
             allowNull: false
         },
+        nombre: {
+            type: datatypes.STRING,
+            allowNull: false
+        },
         texto: {
             type: datatypes.STRING,
             allowNull: false
@@ -24,7 +28,7 @@ module.exports = function (sequelize, datatypes) {
 }
 
 let config = {
-    tableName: 'productos',
+    tableName: 'comentarios',
     timestamps: true,
     underscored: false,
 }
