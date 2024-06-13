@@ -1,49 +1,54 @@
-module.exports = function (sequelize, datatypes) {
+module.exports = function (sequelize, dataTypes) {
     let alias = "Comment";
 
     let cols = {
         id: {
             autoIncrement: true,
             primaryKey: true,
-            type: datatypes.INTEGER.UNSIGNED,
+            type: dataTypes.INTEGER.UNSIGNED,
             allowNull: false
         },
         nombre: {
-            type: datatypes.STRING,
+            type: dataTypes.STRING,
             allowNull: false
         },
         texto: {
-            type: datatypes.STRING,
+            type: dataTypes.STRING,
             allowNull: false
         },
         idUsuarioC: {
-            type: datatypes.INTEGER.UNSIGNED,
+            type: dataTypes.INTEGER.UNSIGNED,
             allowNull: false
         },
         idProducto: {
-            type: datatypes.INTEGER.UNSIGNED,
+            type: dataTypes.INTEGER.UNSIGNED,
             allowNull: false
         },
     }
+
+    let config = {
+        tableName: 'comentarios',
+        timestamps: true,
+        underscored: false,
+    }
+
+    const Comment = sequelize.define(alias, cols, config);
+
+    Comment.associate = function (models) {
+        Comment.belongsTo(models.Product, {
+            as: "productos",
+            foreignKey: "idProducto",
+            timestamps: false
+        });
+        Comment.belongsTo(models.User, {
+            as: "user",
+            foreignKey: "idUsuarioC",
+            timestamps: false
+        });
+    };
+
+    return Comment;
 }
 
-let config = {
-    tableName: 'comentarios',
-    timestamps: true,
-    underscored: false,
-}
 
-Comment.associate = function (models) {
-    Comment.belongsTo(models.Product, {
-        as: "productos",
-        foreignKey: "idProducto",
-        timestamps: false
-    }),
-    Comment.belongsTo(models.User, {
-        as: "user",
-        foreignKey: "idUsuarioC",
-        timestamps: false
-    })
-}
 
-return Comment;
