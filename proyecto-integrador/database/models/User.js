@@ -1,4 +1,4 @@
-module.exports = function(sequelize, datatypes){
+module.exports = function(sequelize, dataTypes){
 
     let alias = 'User';
 

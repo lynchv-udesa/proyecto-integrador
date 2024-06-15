@@ -9,6 +9,7 @@ let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 let productsRouter = require('./routes/products');
 let registerRouter = require('./routes/register');
+let loginRouter = require('./routes/login')
 // importa los modelos para dsp hacer la cookie
 let db = require('./database/models');
 
@@ -34,7 +35,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/product', productsRouter);
-app.use('/register', registerRouter);
 
 
 
