@@ -8,8 +8,9 @@ var logger = require('morgan');
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 let productsRouter = require('./routes/products');
+let registerRouter = require('./routes/register');
 // importa los modelos para dsp hacer la cookie
-//let db = require('./database/models');
+let db = require('./database/models');
 
 
 var app = express();
@@ -33,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/product', productsRouter);
+app.use('/register', registerRouter);
 
 
 
