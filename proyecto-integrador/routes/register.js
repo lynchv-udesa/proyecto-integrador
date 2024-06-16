@@ -5,6 +5,6 @@ const router = express.Router();
 const registerValidations = require("../middlewares/registerValidation");
 
 router.get('/', registerController.index);
-//router.post('/', registerValidations, registerController.store);
+router.post('/', registerValidations, registerController.store);
 
 module.exports = router;

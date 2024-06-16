@@ -17,22 +17,21 @@ let registerController = {
             const formattedFechaNacimiento = moment(req.body.fechaNacimiento, 'YYYY-MM-DD').format('YYYY-MM-DD');
             const user = {
                 email: req.body.email,
-                nombreUsuario: req.body.user,
+                nombreUsuario: req.body.nombreUsuario,
                 contrasenia: bcrypt.hashSync(req.body.contrasenia, 10),
                 fechaNacimiento: formattedFechaNacimiento,
                 dni: req.body.dni,
                 fotoPerfil: req.body.fotoPerfil,
             };
-            db.User(user)
-                .create(user)
-                .then(function(user) {
-                    return res.redirect("/login");
-                })
-                .catch(function(error) {
-                    console.log("Error al guardar el usuario", error);
-                });
-        }
-    }
+            db.User.create(user)
+            .then(function(user) {
+                return res.redirect("/login");
+            })
+            .catch(function (err) {
+                console.log("Error al guardar el usuario", err);
+            });
+    } 
+  }
 };
 
 module.exports = registerController;
