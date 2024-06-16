@@ -2,8 +2,9 @@ const { body } = require("express-validator");
 
 const loginValidation = [
     body("email")
-        .notEmpty().withMessage("Debes completar el campo")
-        .isEmail().withMessage("Por favor ingrese un email válido")
+        .notEmpty()
+        .isEmail()
+        .withMessage("Debes completar el campo").bail()
         .custom(function (value, { req }) {
             return db.User.findOne({
                 where: { email: req.body.email }
@@ -13,10 +14,10 @@ const loginValidation = [
                         throw new error("No existe el email ingresado ")
                     }
                 })
-        }).withMessage("el email ingresado no existe"),
+        }).withMessage("el email ingresado no existe").bail(),
     body("password")
         .notEmpty()
-        .withMessage("Debes introducir un password")
+        .withMessage("Debes introducir un password").bail()
         .custom(function (value, { req }) {
             return db.User.findOne({
                 where: { email: req.body.email }
@@ -30,7 +31,7 @@ const loginValidation = [
                         }
                     }
                 })
-        }).withMessage("La contraseña no es correcta"),
+        }).withMessage("La contraseña no es correcta").bail(),
 ]
 
 module.exports = loginValidation;
