@@ -18,11 +18,15 @@ const productController = {
                     descripcion: `${db.productos[i].descripcion}`,
                     nombreProducto: `${db.productos[i].nombreProducto}`,
                     comment: db.comentarios,
-
-
                 })
             }
         }
+    },
+
+    add: function (req, res) {
+        return res.render('product-add', {
+            mensaje: "Agregue el producto"
+        });
     },
 
     search: function (req, res) {
