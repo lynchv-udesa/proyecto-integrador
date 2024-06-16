@@ -1,4 +1,6 @@
 const { body } = require("express-validator");
+const db= require("../database/models")
+const bcryptjs = require('bcryptjs');
 
 const loginValidation = [
     body("email")
@@ -7,11 +9,11 @@ const loginValidation = [
         .withMessage("Debes completar el campo").bail()
         .custom(function (value, { req }) {
             return db.User.findOne({
-                where: { email: req.body.email }
+                where: { email: value }
             })
                 .then(function (user) {
                     if (!user) {
-                        throw new error("No existe el email ingresado ")
+                        throw new Error("No existe el email ingresado ")
                     }
                 })
         }).withMessage("el email ingresado no existe").bail(),
