@@ -1,19 +1,20 @@
 const bcrypt = require('bcryptjs');
 const db = require('../database/models');
 const moment = require('moment')
-const {validationResults} = require('express-validator')
+const {validationResult} = require('express-validator')
 
 let registerController = {
     index: function(req,res){
         return res.render('register');
     },
     store: function(req,res) {
-        const resultValidation = validationResults(req)
+        const resultValidation = validationResult(req)
         if(!resultValidation.isEmpty()){
             return res.render('register', {
                 errors : resultValidation.mapped(), 
                 oldData : req.body});
-        } else { const formattedFechaNacimiento = moment(req.body.fechaNacimiento, 'YYYY-MM-DD').format('YYYY-MM-DD');
+        } else { 
+            const formattedFechaNacimiento = moment(req.body.fechaNacimiento, 'YYYY-MM-DD').format('YYYY-MM-DD');
             const user = {
                 email: req.body.email,
                 nombreUsuario: req.body.user,

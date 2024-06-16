@@ -1,6 +1,6 @@
 const {body} = require("express-validator")
 
-const registerValidations = [
+const registerValidation = [
     body("email")
         .notEmpty()
         .withMessage("Debes completar tu email")
@@ -19,6 +19,9 @@ const registerValidations = [
     body("dni")
         .optional(),
     body("fotoPerfil")
-        .notEmpty().withMessage("Debes ingresar el nombre de la imagen")
+        //.notEmpty().withMessage("Debes ingresar el nombre de la imagen")
+        .optional(),
 
 ]
+
+module.exports = registerValidation;
