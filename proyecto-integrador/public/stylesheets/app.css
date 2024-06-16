@@ -669,6 +669,10 @@ h5{
   font-size: 1.4em;
 }
 
+.error-msg {
+  margin-bottom: 2em;
+}
+
 textarea.form-input {
   min-height: 140px;
   resize: vertical;
