@@ -7,5 +7,9 @@ router.get("/search", productController.search);
 router.get("/search/:producto", productController.producto)
 router.get('/:id', productController.show);
 
+// Rutas de los formularios
+
+router.post('/store', productController.store);
+router.post('/update/:id', productController.update);
 
 module.exports = router;

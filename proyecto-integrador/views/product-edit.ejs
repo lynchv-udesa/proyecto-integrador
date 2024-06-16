@@ -12,15 +12,15 @@
 			</div>
 			<div class="container__form">
 				<img src="/images/logo.png" alt="">
-				<form class="form-data" action="/" method="get">
+				<form class="form-data" action="/products/update/<%= product.id %>" method="post">
 					<div class="contenedor-input">
-						<input class="form-file" type="text" placeholder="Imagen" required>
+						<input class="form-file" type="file" placeholder="Imagen" required>
 						<label class="form-label" for="imagen"></label>
 					</div>
 
 					<div class="contenedor-input">
 						<input class="form-input" type="text" placeholder="Nombre del producto" required>
-						<label class="form-label" for="nombre"></label>
+						<label class="form-label" for="producto"></label>
 					</div>
 
 					<div class="contenedor-input">
