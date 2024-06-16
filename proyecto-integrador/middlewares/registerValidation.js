@@ -25,3 +25,4 @@ const registerValidation = [
 ]
 
 module.exports = registerValidation;
+

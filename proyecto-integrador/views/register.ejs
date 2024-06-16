@@ -1,75 +1,69 @@
 <!DOCTYPE html>
 <html lang="es">
-<%- include('./partials/head') %>
+<head>
+    <%- include('./partials/head') %>
+</head>
+<body>
+    <%- include('./partials/header') %>
 
-	<body>
-		<%- include('./partials/header') %>
-			<!-- Novedades -->
-		<main class="mainRegister"></main>
-			<div class="col-12">
-				<h2 class="products-title">Registrate</h2>
-			</div>
-			<div class="container__form">
-				<img src="/images/logo.png" alt="">
-				<form class="form-data" action="/login" method="post">
-					<div class="contenedor-input">
-						<label class="form-label" for="email"></label>
-						<input class="form-input" type="email" name="email" placeholder="Correo eletrónico" value="<%= locals.oldData && oldData.email ? oldData.email : null %>">
-						<% if(locals.errors && errors.email) { %>
-							<div class="error-msg"><%= errors.email.msg %></div>
-						<% } %>
-						
-					</div>
+    <main class="mainRegister">
+        <div class="col-12">
+            <h2 class="products-title">Regístrate</h2>
+        </div>
+        <div class="container__form">
+            <img src="/images/logo.png" alt="">
+            <form class="form-data" action="/register" method="post">
+                <div class="contenedor-input">
+                    <label class="form-label" for="email">Correo electrónico</label>
+                    <input class="form-input" type="email" name="email" placeholder="Correo electrónico" value="<%= locals.oldData && locals.oldData.email ? locals.oldData.email : '' %>">
+                    <% if (locals.errors && locals.errors.email) { %>
+                        <div class="error-msg"><%= locals.errors.email.msg %></div>
+                    <% } %>
+                </div>
 
-					<div class="contenedor-input">
-						<label class="form-label" for="nombreUsuario"></label>
-						<input class="form-input" type="text" name="nombreUsuario" placeholder="Usuario" value="<%= locals.oldData && oldData.nombreUsuario ? oldData.nombreUsuario : null %>">
-						<% if(locals.errors && errors.nombreUsuario) { %>
-							<div class="error-msg"><%= errors.nombreUsuario.msg %></div>
-						<% } %>
-						
-					</div>
+                <div class="contenedor-input">
+                    <label class="form-label" for="nombreUsuario">Usuario</label>
+                    <input class="form-input" type="text" name="nombreUsuario" placeholder="Usuario" value="<%= locals.oldData && locals.oldData.nombreUsuario ? locals.oldData.nombreUsuario : '' %>">
+                    <% if (locals.errors && locals.errors.nombreUsuario) { %>
+                        <div class="error-msg"><%= locals.errors.nombreUsuario.msg %></div>
+                    <% } %>
+                </div>
 
-					<div class="contenedor-input">
-						<label class="form-label" for="contrasenia"></label>
-						<input class="form-input" type="password" name="contrasenia" placeholder="Contraseña" value="">
-						<% if(locals.errors && errors.contrasenia) { %>
-							<div class="error-msg"> <%= errors.contrasenia.msg %></div>
-						<% } %>
-						
-					</div>
+                <div class="contenedor-input">
+                    <label class="form-label" for="contrasenia">Contraseña</label>
+                    <input class="form-input" type="password" name="contrasenia" placeholder="Contraseña" value="">
+                    <% if (locals.errors && locals.errors.contrasenia) { %>
+                        <div class="error-msg"><%= locals.errors.contrasenia.msg %></div>
+                    <% } %>
+                </div>
 
-					<div class="contenedor-input">
-						<label class="form-label" for="fechaNacimiento"></label>
-						<input class="form-input" type="date" name="fechaNacimiento" placeholder="Fecha de nacimiento" >
-						
-					</div>
+                <div class="contenedor-input">
+                    <label class="form-label" for="fechaNacimiento">Fecha de nacimiento</label>
+                    <input class="form-input" type="date" name="fechaNacimiento" placeholder="Fecha de nacimiento" value="<%= locals.oldData && locals.oldData.fechaNacimiento ? locals.oldData.fechaNacimiento : '' %>">
+                </div>
 
-					<div class="contenedor-input">
-						<label class="form-label" for="dni"></label>
-						<input class="form-input" type="number" name="dni" placeholder="Numero de documento" >
-						
-					</div>
+                <div class="contenedor-input">
+                    <label class="form-label" for="dni">Número de documento</label>
+                    <input class="form-input" type="number" name="dni" placeholder="Número de documento" value="<%= locals.oldData && locals.oldData.dni ? locals.oldData.dni : '' %>">
+                </div>
 
-					<div class="contenedor-input">
-						<label class="form-label" for="fotoPerfil"></label>
-						<input class="form-input" type="text" name="fotoPerfil" placeholder="Foto" value="<%= locals.oldData && oldData.fotoPerfil ? oldData.fotoPerfil : null %>">
-						<% if(locals.errors && errors.fotoPerfil) { %>
-							<div class="error-msg"> <%= errors.fotoPerfil.msg %></div>
-						<% } %>
-						
-					</div>
+                <div class="contenedor-input">
+                    <label class="form-label" for="fotoPerfil">Foto</label>
+                    <input class="form-input" type="text" name="fotoPerfil" placeholder="Foto" value="<%= locals.oldData && locals.oldData.fotoPerfil ? locals.oldData.fotoPerfil : '' %>">
+                    <% if (locals.errors && locals.errors.fotoPerfil) { %>
+                        <div class="error-msg"><%= locals.errors.fotoPerfil.msg %></div>
+                    <% } %>
+                </div>
 
-					<div class="contenedor-input1">
-						<input class="form-input__button" type="submit" value="Registrarme">
-						<label class="form-label" for="registrarme"></label>
-					</div>
-				</form>
-			</div>
-		</main>
-			<%- include('./partials/footer') %>
-	</body>
-	<script src="/js/uikit.min.js"></script>
-	<script src="/js/header-scroll.js"></script>
+                <div class="contenedor-input1">
+                    <input class="form-input__button" type="submit" value="Registrarme">
+                </div>
+            </form>
+        </div>
+    </main>
 
+    <%- include('./partials/footer') %>
+    <script src="/js/uikit.min.js"></script>
+    <script src="/js/header-scroll.js"></script>
+</body>
 </html>
