@@ -3,7 +3,7 @@ const db = require("../database/models");
 const op = db.Sequelize.Op;
 const product = db.Product;
 const comentario = db.Comment;
-const {validationResults} = require('express-validator')
+const {validationResult} = require('express-validator')
 
 
 const productController = {
@@ -26,12 +26,12 @@ const productController = {
     },
 
 
-    add: function (req, res) {
-        return res.render('product-add', {
-            nombreUsuario: `${db.usuario[1].nombreUsuario}`,
-            mensaje: "Agregue el producto"
-        });
-    },
+   // add: function (req, res) {
+     //   return res.render('product-add', {
+       //     nombreUsuario: `${db.usuario[1].nombreUsuario}`,
+         //   mensaje: "Agregue el producto"
+       // });
+ //   },
 
 
    // search: function (req, res) {
@@ -79,7 +79,7 @@ const productController = {
     },
 
     store: function (req, res){
-        const resultValidation = validationResults(req)
+        const resultValidation = validationResult(req)
         if(!resultValidation.isEmpty()){
             return res.render('product-add', {
                 errors : resultValidation.mapped(), 
