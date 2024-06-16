@@ -8,14 +8,6 @@ module.exports = function(sequelize, dataTypes){
             primaryKey: true,
             type: dataTypes.INTEGER,
         },
-        createdAt: {
-            type: dataTypes.DATE,
-            allowNull: true,
-        },
-        updatedAt: {
-            type: dataTypes.DATE,
-            allowNull: true,
-        },
         nombreUsuario: {
             type: dataTypes.STRING,
         },
@@ -39,7 +31,7 @@ module.exports = function(sequelize, dataTypes){
     let config = {
         tableName: 'usuarios',
         timestamps: true,
-        underscored: true,
+        underscored: false,
     };
 
     const User = sequelize.define(alias, cols, config);

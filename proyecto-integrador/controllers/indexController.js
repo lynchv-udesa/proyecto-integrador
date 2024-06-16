@@ -1,10 +1,10 @@
-let db = require("../db/index");
+const db = require('../database/models');
 
 const indexController = {
 
     index: function (req, res) {
         return res.render('index', {
-            index: db.productos,
+            index: db.Product,
         })
     },
 
@@ -20,18 +20,18 @@ const indexController = {
     producto: function (req, res) {
         let id = req.params.nombreProducto;
         let results = [];
-        for (let i = 0; i < db.productos.length; i++) {
-            if (id == db.productos.id) {
+        for (let i = 0; i < db.Product.length; i++) {
+            if (id == db.Product.id) {
                 results.push(db.productos[i])
             }
         }
         if (resultado.length != 0) {
             return res.render('search-result', {
-                index: db.productos,
-                imagen: `${db.productos[i].imagen}`,
-                descripcion: `${db.productos[i].descripcion}`,
-                nombreProducto: `${db.productos[i].nombreProducto}`,
-                id: `${db.productos[i].id}`,
+                index: db.Product,
+                imagen: `${db.Product[i].imagen}`,
+                descripcion: `${db.Product[i].descripcion}`,
+                nombreProducto: `${db.Product[i].nombreProducto}`,
+                id: `${db.Product[i].id}`,
             })
         }
 

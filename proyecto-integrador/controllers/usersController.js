@@ -1,4 +1,4 @@
-let db = require("../db/index");
+const db = require('../database/models');
 
 const usersController = {
 

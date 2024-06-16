@@ -18,20 +18,18 @@ const productController = {
                     descripcion: `${db.productos[i].descripcion}`,
                     nombreProducto: `${db.productos[i].nombreProducto}`,
                     comment: db.comentarios,
-
-
                 })
             }
         }
     },
 
 
-   // add: function (req, res) {
-     //   return res.render('product-add', {
-       //     nombreUsuario: `${db.usuario[1].nombreUsuario}`,
-         //   mensaje: "Agregue el producto"
-       // });
- //   },
+   add: function (req, res) {
+        return res.render('product-add', {
+            nombreUsuario: `${db.usuario[1].nombreUsuario}`,
+            mensaje: "Agregue el producto"
+        });
+   },
 
 
    // search: function (req, res) {
