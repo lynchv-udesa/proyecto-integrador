@@ -1,6 +1,7 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
+const session = require("express-session")
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
@@ -27,15 +28,47 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Aca va el session
+app.use(session(
+  {
+    secret: "proyecto",
+    resave: false,
+    saveUninitialized: true
+  }
+))
 
+app.use(function(req,res,next){
+  if(req.session.user != undefined){
+    res.locals.user = req.session.user;
+    return next()
+  }
+  return next()
+})
 
 //Aca se gestiona la cookie
+app.use(function(req,res,next){
+  if(req.cookies.userId != undefined && req.session.user == undefined){
+    let idDeLaCookie = req.cookies.userId;
+
+    db.User.findByPk(idDeLaCookie)
+    .then( function(user){
+      req.session.user = user
+      res.locals.user = user;
+      return next()
+    })    
+    .catch(function(err){
+      console.log("error en cookies", err)
+    })
+  } else {
+    return next()
+  }
+})
 
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/product', productsRouter);
 app.use('/register', registerRouter)
+app.use('/login', loginRouter)
 
 
 
