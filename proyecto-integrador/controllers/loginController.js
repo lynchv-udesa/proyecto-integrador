@@ -9,7 +9,6 @@ loginController = {
     login: function (req, res) {
         const resultValidation = validationResult(req)
         if (!resultValidation.isEmpty()) {
-            console.log("Validation errors: ", resultValidation.mapped());
             return res.render("login", {
                 errors: resultValidation.mapped(),
                 oldData: req.body
@@ -18,21 +17,19 @@ loginController = {
         db.User.findOne({
             where: [{ email: req.body.email }]
         })
-        .then(function (user) {
-            let validPassword = bcrypt.compareSync(req.body.password,user.password )
-            console.log("validpassword? : ", validPassword)
-            req.session.user = user;
-            if (req.body.checkbox != undefined) {
-                res.cookie("userId", user.id, { maxAge: 1000 * 60 * 5 });
-              }
-              return res.redirect("/");
+            .then(function (user) {
+                req.session.user = user;
+                if (req.body.checkbox != undefined) {
+                    res.cookie("userId", user.id, { maxAge: 1000 * 60 * 5 });
+                }
+                return res.redirect("/");
             })
             .catch(function (e) {
-              console.log(e);
+                console.log(e);
             });
-        },
-
     },
 
+},
 
-module.exports = loginController;
+
+    module.exports = loginController;
