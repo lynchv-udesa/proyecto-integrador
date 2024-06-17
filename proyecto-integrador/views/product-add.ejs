@@ -2,42 +2,51 @@
 <html lang="es">
 <%- include('./partials/head') %>
 
-	<body>
-		<%- include('./partials/headerLogueado', { nombreUsuario: nombreUsuario }) %>
-			<main class="mainRegister"></main>
-			<div class="col-12">
-				<h2 class="products-title">
-					<%= mensaje %>
-				</h2>
-			</div>
-			<div class="container__form">
-				<img src="/images/logo.png" alt="">
-				<form class="form-data" action="/store" method="post">
-					<div class="contenedor-input">
-						<input class="form-file" type="text" placeholder="Imagen" required>
-						<label class="form-label" for="imagen"></label>
-					</div>
+<body>
+    <%- include('./partials/headerLogueado', { nombreUsuario: locals.nombreUsuario }) %>
+    <main class="mainRegister"></main>
+    <div class="col-12">
+        <h2 class="products-title">
+            <%= locals.mensaje %>
+        </h2>
+    </div>
+    <div class="container__form">
+        <img src="/images/logo.png" alt="">
+        <form class="form-data" action="/products/store" method="post" >
+            <div class="contenedor-input">
+                <input class="form-input" type="text" name="imagen" placeholder="Imagen" value="<%= locals.oldData && locals.oldData.imagen ? locals.oldData.imagen : '' %>">
+                <label class="form-label" for="imagen"></label>
+                <% if (locals.errors && locals.errors.imagen) { %>
+                    <div class="error-msg"><%= locals.errors.imagen.msg %></div>
+                <% } %>
+            </div>
 
-					<div class="contenedor-input">
-						<input class="form-input" type="text" placeholder="Nombre del producto" required>
-						<label class="form-label" for="nombre"></label>
-					</div>
+            <div class="contenedor-input">
+                <input class="form-input" type="text" name="nombre" placeholder="Nombre del producto" value="<%= locals.oldData && locals.oldData.nombre ? locals.oldData.nombre : '' %>">
+                <label class="form-label" for="nombre"></label>
+                <% if (locals.errors && locals.errors.nombre) { %>
+                    <div class="error-msg"><%= locals.errors.nombre.msg %></div>
+                <% } %>
+            </div>
 
-					<div class="contenedor-input">
-						<textarea class="form-input" type="textarea" placeholder="Descripción" required></textarea>
-						<label class="form-label" for="descripcion"></label>
-					</div>
+            <div class="contenedor-input">
+                <textarea class="form-input" name="descripcion" placeholder="Descripción"><%= locals.oldData && locals.oldData.descripcion ? locals.oldData.descripcion : '' %></textarea>
+                <label class="form-label" for="descripcion"></label>
+                <% if (locals.errors && locals.errors.descripcion) { %>
+                    <div class="error-msg"><%= locals.errors.descripcion.msg %></div>
+                <% } %>
+            </div>
 
-					<div class="contenedor-input1">
-						<input class="form-input__button" type="submit" value="Agregar">
-						<label class="form-label" for="Agregar"></label>
-					</div>
-				</form>
-			</div>
-			</main>
-			<%- include('./partials/footer') %>
-	</body>
-	<script src="/js/uikit.min.js"></script>
-	<script src="/js/header-scroll.js"></script>
+            <div class="contenedor-input1">
+                <input class="form-input__button" type="submit" value="Agregar">
+                <label class="form-label" for="Agregar"></label>
+            </div>
+        </form>
+    </div>
+    </main>
+    <%- include('./partials/footer') %>
+    <script src="/js/uikit.min.js"></script>
+    <script src="/js/header-scroll.js"></script>
+</body>
 
 </html>

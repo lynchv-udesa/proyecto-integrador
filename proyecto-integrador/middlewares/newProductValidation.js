@@ -11,6 +11,8 @@ const newProductValidations = [
         .notEmpty()
         .withMessage("Debes introducir una descripcion")
         .bail()
-        .isLength({min:8}).withMessage("El password debe tener minimo 8 caracteres"),
+        .isLength({min:8}).withMessage("La descripcion debe tener mas de 8 caracteres"),
 
 ]
+
+module.exports = newProductValidations;
