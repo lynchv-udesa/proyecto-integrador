@@ -24,8 +24,10 @@ const productController = {
     },
 
     add: function (req, res) {
+        const nombreUsuario = req.session.nombreUsuario
         return res.render('product-add', {
-            mensaje: "Agregue el producto"
+            mensaje: "Agregue el producto",
+            nombreUsuario: nombreUsuario
         });
     },
 

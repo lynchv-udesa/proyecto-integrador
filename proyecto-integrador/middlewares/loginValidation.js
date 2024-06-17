@@ -14,7 +14,7 @@ const loginValidation = [
                 where: { email: value }
             })
                 .then(function (user) {
-                    if (!user) {
+                    if (!userToLogin) {
                         throw new Error("El email no esta registrado")
                     }
                 })
