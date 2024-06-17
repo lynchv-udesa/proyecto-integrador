@@ -3,7 +3,11 @@
 <%- include('./partials/head') %>
 
 	<body>
+		<% if (locals.user) { %>
 		<%- include('./partials/headerLogueado', { nombreUsuario: locals.user.nombreUsuario }) %>
+		<% } else { %>
+			<%- include('./partials/header') %>
+		<% } %>
 			<!-- Datos del usuario -->
 			<section class="info-usuario products-wrapper details">
 				<div class="row">
@@ -42,18 +46,22 @@
 					<% for (let i=0; i < usuario.productos.length; i++ ) { %>
 						<div class="col-12 col-sm-6 col-lg-3">
 							<section class="product-box">
-								<a href="/product/<%= usuario.productos.[i].id %>">
+								<a href="/products/<%= usuario.productos[i].id %>">
 									<figure class="product-box_image">
-										<img src="<%= usuario.productos.[i].imagen %>" alt="">
+										<img src="<%= usuario.productos[i].imagen %>" alt="">
 									</figure>
 									<article class="product-box_data">
 										<h2>
-											<%= usuario.productos.[i].nombre %>
+											<%= usuario.productos[i].nombre %>
 										</h2>
 										<p>
-											<%= usuario.productos.[i].descripcion %>
+											<%= usuario.productos[i].descripcion %>
 										</p>
-										<p>Comentarios: <%= productos.comentarios.length %></p>
+										<% if (usuario.productos[i].comentarios && usuario.productos[i].comentarios.length > 0) { %>
+											<p>Comentarios: <%= usuario.productos[i].comentarios.length %></p>
+										<% } else { %>
+											<p>Sin comentarios</p>
+										<% } %>
 									</article>
 								</a>
 							</section>

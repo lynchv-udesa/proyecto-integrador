@@ -41,7 +41,7 @@ module.exports = function (sequelize, dataTypes) {
             timestamps: false
         });
         Comment.belongsTo(models.User, {
-            as: "user",
+            as: "usuarios",
             foreignKey: "idUsuarioC",
             timestamps: false
         });
