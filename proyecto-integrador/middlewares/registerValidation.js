@@ -26,7 +26,7 @@ const registerValidation = [
         .notEmpty()
         .withMessage("Debes introducir un password")
         .bail()
-        .isLength({min:4}).withMessage("El password debe tener minimo 8 caracteres"),
+        .isLength({min:4}).withMessage("El password debe tener minimo 4 caracteres"),
 
     body("fechaNacimiento")
         .optional(),
