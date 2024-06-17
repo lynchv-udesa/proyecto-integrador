@@ -4,6 +4,9 @@ const indexController = {
 
     index: function (req, res) {
         db.Product.findAll({
+            include: [
+                { association: 'usuarios' }
+            ],
             order: [
                 ["createdAt", "DESC"]
             ],
