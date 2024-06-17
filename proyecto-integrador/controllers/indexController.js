@@ -17,13 +17,6 @@ const indexController = {
         return res.render('register')
     },
 
-    add: function (req, res) {
-        const nombreUsuario = req.session.user
-        return res.render('product-add', {
-            mensaje: "Agregue el producto",
-            nombreUsuario: nombreUsuario
-        });
-    },
 
 };
 

@@ -3,7 +3,7 @@ const productController = require('../controllers/productController');
 const productValidations = require("../middlewares/newProductValidation");
 const router = express.Router();
 
-router.get('/add', productController.add);
+router.get('/create', productController.create);
 router.get('/search', productController.search);
 router.get('/:id', productController.show);
 

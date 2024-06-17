@@ -20,24 +20,13 @@ const registerValidation = [
 
     body("nombreUsuario")
         .notEmpty()
-        .withMessage("Debes completar tu nombre de usuario")
-        .bail()
-        .custom(function(value, {req}){
-            return db.User.findOne({
-                where: {email: req.body.nombreUsuario}
-            })
-            .then(function(user){
-                if(user){
-                    throw new Error('El usuario ingresado ya existe')
-                }
-            })
-        }).withMessage('El usuario ingresado ya existe'),
+        .withMessage("Debes completar tu nombre de usuario"),
 
     body("contrasenia")
         .notEmpty()
         .withMessage("Debes introducir un password")
         .bail()
-        .isLength({min:8}).withMessage("El password debe tener minimo 8 caracteres"),
+        .isLength({min:4}).withMessage("El password debe tener minimo 8 caracteres"),
 
     body("fechaNacimiento")
         .optional(),

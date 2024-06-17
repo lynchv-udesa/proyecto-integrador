@@ -23,14 +23,6 @@ const productController = {
         }
     },
 
-    add: function (req, res) {
-        const nombreUsuario = req.session.user
-        return res.render('product-add', {
-            mensaje: "Agregue el producto",
-            nombreUsuario: nombreUsuario
-        });
-    },
-
 
     search: function (req, res) {
         const query = req.query.search;
@@ -52,28 +44,25 @@ const productController = {
         });
     },
 
-  //  create: function (req, res) {
-        //Control de acceso
-    //    if (req.session.user == undefined) {
-      //      return res.redirect('/register');
-        //} else {
-            //Mostrar formulario de carga de películas
-          //  db.Genre.findAll()
-            //    .then(data => {
-              //      return res.render('product-add', { genres: data });
-                //})
-                //.catch(error => {
-                  //  console.log(error);
-               // })
-      //  }
-  //  },
+
+  
+    create: function (req, res) {
+          if (req.session.user == undefined) {
+              return res.redirect('/register');
+        } else {
+            return res.render('product-add', {
+                mensaje: "Agregue el producto",
+                nombreUsuario: req.session.user.nombreUsuario
+            });
+        }
+    },
 
     edit: function (req, res){
         if (req.session.user == undefined) {
             return res.redirect('/register');
         } else {
         const id = req.params.id;
-        product.findByPk(id)
+        db.Product.findByPk(id)
         .then(function(productData){
             res.render("product-edit", {product : productData})
         })
@@ -100,7 +89,7 @@ const productController = {
             return res.redirect('/');
         })
         .catch(function(error){
-            console.log("Error al guardar el producto", err)
+            console.log("Error al guardar el producto", error)
         })
         }
     },
