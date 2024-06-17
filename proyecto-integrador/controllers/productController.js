@@ -39,11 +39,11 @@ const productController = {
             }
         })
         .then(function (products) {
-            res.render('search-results', { products: products, mensaje: `Resultados de búsqueda para '${query}'` });
+            res.render('search-results', { productos: products, mensaje: `Resultados de búsqueda para '${query}'` });
         })
         .catch(function (error) {
             console.log(error);
-            res.render('search-results', { products: [], mensaje: `Error al buscar productos para '${query}'` });
+            res.render('search-results', { productos: [], mensaje: `Error al buscar productos para '${query}'` });
         });
     },
 
