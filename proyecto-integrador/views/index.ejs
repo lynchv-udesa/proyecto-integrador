@@ -48,16 +48,16 @@
 					<% for (let i=0; i < index.length; i++ ) { %>
 						<div class="col-12 col-sm-6 col-lg-3">
 							<section class="product-box">
-								<a href="/product/<%= index[i].id %>">
+								<a href="/products/<%= index[i].id %>">
 									<figure class="product-box_image">
 										<img src="<%= index[i].imagen %>" alt="">
 									</figure>
 									<article class="product-box_data">
 										<h2>
-											<%= index[i].nombreProducto %>
+											<%= index[i].nombre %>
 										</h2>
 										<p>
-											<%= index[i].descripcion %>
+											<%= index[i].descripcion %> 
 										</p>
 										<p>Comentarios: 3</p>
 									</article>
@@ -77,10 +77,10 @@
 						<h2 class="products-title">MÁS COMENTADOS</h2>
 					</div>
 					<!-- Show the "ultimos" products -->
-					<% for (let i=5; i < index.length; i++ ) { %>
+					<% for (let i=0; i < 4; i++ ) { %>
 						<div class="col-12 col-sm-6 col-lg-3">
 							<section class="product-box">
-								<a href="/product/<%= index[i].id %>">
+								<a href="/products/<%= index[i].id %>">
 									<figure class="product-box_image">
 										<img src="<%= index[i].imagen %>" alt="">
 									</figure>
