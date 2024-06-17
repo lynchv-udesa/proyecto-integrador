@@ -22,14 +22,17 @@ const loginValidation = [
     body("contrasenia")
         .notEmpty()
         .withMessage("Debes introducir una contraseña")
-        .bail()
         .custom(function(value, { req }) {
             return db.User.findOne({
-                where: { email: req.body.email }
+                where: { email: value }
             })
             .then(function(user) {
                 if (user) {
-                    const contraseniaOk = bcryptjs.compareSync(value, user.contrasenia);
+                    const contrasenia = user.contrasenia
+                    const contraseniaOk = bcryptjs.compareSync(value, contrasenia);
+                    console.log("contraseña de base de datos : ", contrasenia)
+                    console.log("contraseña de proporcionada : ", value)
+                    console.log("Comparacionn de contraseñas : ", contraseniaOk)
                     if (!contraseniaOk) {
                         throw new Error("Contraseña incorrecta");
                     }

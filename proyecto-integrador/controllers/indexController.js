@@ -3,9 +3,14 @@ const db = require('../database/models');
 const indexController = {
 
     index: function (req, res) {
-        return res.render('index', {
-            index: db.Product,
-        })
+        db.Product.findAll()
+            .then(products => {
+                return res.render('index', {
+                    index: products,
+                    user: req.session.user
+                });
+            })
+            .catch(error => console.log(error));
     },
 
     register: function (req, res) {

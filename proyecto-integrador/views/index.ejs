@@ -3,7 +3,11 @@
 <%- include('./partials/head') %>
 
 	<body>
-		<%- include('./partials/header') %>
+		<% if (locals.user != undefined) { %>
+			<%- include('./partials/headerLogueado', { nombreUsuario: locals.user.nombreUsuario }) %>
+		<% } else { %>
+			<%- include('./partials/header') %>
+		<% } %>
 			<!-- Banner -->
 			<div uk-slideshow="autoplay: true; autoplay-interval: 3000;">
 
