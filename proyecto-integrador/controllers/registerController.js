@@ -1,4 +1,4 @@
-const bcryptjs = require('bcryptjs');
+const bcrypt = require('bcryptjs');
 const db = require('../database/models');
 const moment = require('moment')
 const {validationResult} = require('express-validator')
@@ -18,7 +18,7 @@ let registerController = {
             const user = {
                 email: req.body.email,
                 nombreUsuario: req.body.nombreUsuario,
-                contrasenia: bcryptjs.hashSync(req.body.contrasenia, 10),
+                contrasenia: bcrypt.hashSync(req.body.contrasenia, 10),
                 fechaNacimiento: formattedFechaNacimiento,
                 dni: req.body.dni,
                 fotoPerfil: req.body.fotoPerfil,

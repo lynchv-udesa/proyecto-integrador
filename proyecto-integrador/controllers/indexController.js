@@ -13,8 +13,10 @@ const indexController = {
     },
 
     add: function (req, res) {
+        const nombreUsuario = req.session.user
         return res.render('product-add', {
-            mensaje: "Agregue el producto"
+            mensaje: "Agregue el producto",
+            nombreUsuario: nombreUsuario
         });
     },
 

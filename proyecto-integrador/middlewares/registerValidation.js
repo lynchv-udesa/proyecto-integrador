@@ -20,7 +20,18 @@ const registerValidation = [
 
     body("nombreUsuario")
         .notEmpty()
-        .withMessage("Debes completar tu nombre de usuario"),
+        .withMessage("Debes completar tu nombre de usuario")
+        .bail()
+        .custom(function(value, {req}){
+            return db.User.findOne({
+                where: {email: req.body.nombreUsuario}
+            })
+            .then(function(user){
+                if(user){
+                    throw new Error('El usuario ingresado ya existe')
+                }
+            })
+        }).withMessage('El usuario ingresado ya existe'),
 
     body("contrasenia")
         .notEmpty()
@@ -32,7 +43,18 @@ const registerValidation = [
         .optional(),
 
     body("dni")
-        .optional(),
+        .optional()
+        .bail()
+        .custom(function(value, {req}){
+            return db.User.findOne({
+                where: {email: req.body.dni}
+            })
+            .then(function(user){
+                if(user){
+                    throw new Error('El dni ingresado ya existe')
+                }
+            })
+        }).withMessage('El dni ingresado ya existe'),
         
     body("fotoPerfil")
         //.notEmpty().withMessage("Debes ingresar el nombre de la imagen")

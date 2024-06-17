@@ -24,12 +24,13 @@ const productController = {
     },
 
     add: function (req, res) {
-        const nombreUsuario = req.session.nombreUsuario
+        const nombreUsuario = req.session.user
         return res.render('product-add', {
             mensaje: "Agregue el producto",
             nombreUsuario: nombreUsuario
         });
     },
+
 
     search: function (req, res) {
         const query = req.query.search;
@@ -51,11 +52,26 @@ const productController = {
         });
     },
 
-    create: function (req, res){
-        
-    },
+  //  create: function (req, res) {
+        //Control de acceso
+    //    if (req.session.user == undefined) {
+      //      return res.redirect('/register');
+        //} else {
+            //Mostrar formulario de carga de películas
+          //  db.Genre.findAll()
+            //    .then(data => {
+              //      return res.render('product-add', { genres: data });
+                //})
+                //.catch(error => {
+                  //  console.log(error);
+               // })
+      //  }
+  //  },
 
     edit: function (req, res){
+        if (req.session.user == undefined) {
+            return res.redirect('/register');
+        } else {
         const id = req.params.id;
         product.findByPk(id)
         .then(function(productData){
@@ -63,7 +79,7 @@ const productController = {
         })
         .catch(function(error){
             console.log(error)
-        })
+        })}
     },
 
     store: function (req, res){
@@ -80,12 +96,12 @@ const productController = {
             };
 
         db.Product.create(product)
-            .then(function(data){
-                res.redirect('/')
-            })
-            .catch(function(error){
-                console.log(error)
-            })
+        .then(function(data){
+            return res.redirect('/');
+        })
+        .catch(function(error){
+            console.log("Error al guardar el producto", err)
+        })
         }
     },
 
@@ -106,7 +122,7 @@ const productController = {
             res.redirect('/')
         })
         .catch(function (error){
-            console.log(error)
+            console.log("Error al guardar el producto", err)
        })
     },
 
