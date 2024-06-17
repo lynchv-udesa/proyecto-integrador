@@ -26,9 +26,9 @@
                                 <p class="product-detail-description-p">
                                     <%= descripcion %>
                                 </p>
-                                <% for (let i=0; i < 3; i++ ) { %>
+                                <% for (let i=0; i < productos.comentarios[i].id; i++ ) { %>
                                     <article>
-                                        <img src="<%= comment[i].imagenPerfilC %>" alt="">
+                                        <img src="<%= productos.comentarios[i].imagenPerfilC %>" alt="">
                                         <div class="data">
                                             <p class="user">
                                                 <strong> <a class="product-detail-a" href="/users/profile">
@@ -39,12 +39,23 @@
                                     </article>
                                     <% } %>
 
-
-                                        <form class="form" action="/" method="GET">
-                                            <input class="form-input" type="text" value="" placeholder="Agregar comentario">
+                                    <% if(locals.user){ %>
+                                        <form class="form" action="/products/saveComment" method="post">
+                                            <input class="form-input" type="text" name="comentario" value="<%= locals.oldData && oldData.comentario ? oldData.comentario : null %>" placeholder="Agregar comentario">
+                                            <% if(locals.errors && errors.comentario) { %>
+                                                <div class="error-msg"><%= errors.comentario.msg %></div>
+                                            <% } %>
                                             <label class="form-label" for="comentario"></label>
                                             <button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
                                         </form>
+                                        <% } %>
+                                    <% if(!locals.user){ %>
+                                        <form class="form" action="/" method="GET">
+                                            <input class="form-input" type="text" value="" placeholder="Agregar comentario">
+                                            <label class="form-label" for="comentario"></label>
+                                            <button type="submit" class="buy-now-button">DEBES LOGUEARTE PARA COMENTAR</button>
+                                        </form>
+                                        <% } %>
                                         <hr>
                         </div>
                     </div>

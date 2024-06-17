@@ -8,19 +8,38 @@ const {validationResult} = require('express-validator')
 
 const productController = {
 
+    //show: function (req, res) {
+      //  let id = req.params.id;
+        //for (let i = 0; i < db.productos.length; i++) {
+          //  if (id == db.productos[i].id) {
+            //    return res.render('product', {
+              //      index: db.productos,
+              //      imagen: `${db.productos[i].imagen}`,
+              //      descripcion: `${db.productos[i].descripcion}`,
+              //      nombreProducto: `${db.productos[i].nombreProducto}`,
+              //      comment: db.comentarios,
+              //  })
+          //  }
+      //  }
+  //  },
+
     show: function (req, res) {
         let id = req.params.id;
-        for (let i = 0; i < db.productos.length; i++) {
-            if (id == db.productos[i].id) {
-                return res.render('product', {
-                    index: db.productos,
-                    imagen: `${db.productos[i].imagen}`,
-                    descripcion: `${db.productos[i].descripcion}`,
-                    nombreProducto: `${db.productos[i].nombreProducto}`,
-                    comment: db.comentarios,
-                })
-            }
-        }
+
+        db.Product.findByPk(id, {
+            // includes de usuarios y comentarios
+            include: [
+                { association: 'usuarios' },
+                { association: 'comentarios' }
+            ]
+        })
+            .then(data => {
+                //console.log("producto por id: ", JSON.stringify(data,null, 4))
+                return res.render('product', { producto: data });
+            })
+            .catch(error => {
+                console.log(error);
+            })
     },
 
 
@@ -114,6 +133,29 @@ const productController = {
             console.log("Error al guardar el producto", err)
        })
     },
+
+   comment: function (req, res){
+    const resultValidation = validationResult(req)
+    if(!resultValidation.isEmpty()){
+        return res.render('product', {
+            errors : resultValidation.mapped(), 
+            oldData : req.body});
+    } else { 
+        const comentario = {
+            nombre: req.body.nombre,
+            descripcion: req.body.descripcion,
+            imagen: req.body.imagen
+        };
+
+    db.Comment.create(comentario)
+    .then(function(data){
+        return res.redirect('/product');
+    })
+    .catch(function(error){
+        console.log("Error al guardar el comentario", error)
+    })
+    }
+},
 
 
 }
