@@ -3,24 +3,12 @@ const op = db.Sequelize.Op
 
 const usersController = {
 
-   // profile: function (req, res) {
-   //     return res.render('profile', {
-   //         index: db.productos,
-   //         fotoPerfil: `${db.usuario[1].fotoPerfil}`,
-   //         nombreUsuario: `${db.usuario[1].nombreUsuario}`,
-   //     })
-
-   // },
 
    profile: function (req, res) {
     let usuario = req.session.user;
 
-    db.User.findOne({
-        where: { nombreUsuario: { [op.like]: usuario } },
-        include: [
-            { association: 'productos' },
-            { association: 'comentarios' }
-        ]
+    db.User.findByPk(req.session.user.id, {
+        include: [{ model: db.Product, as: 'products', order: [['createdAt', 'DESC']] }]
     })
     .then(function(usuario) {
         let id = usuario.id;

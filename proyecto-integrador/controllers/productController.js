@@ -1,27 +1,11 @@
 
 const db = require("../database/models");
 const op = db.Sequelize.Op;
-const product = db.Product;
-const comentario = db.Comment;
 const {validationResult} = require('express-validator')
 
 
 const productController = {
 
-    //show: function (req, res) {
-      //  let id = req.params.id;
-        //for (let i = 0; i < db.productos.length; i++) {
-          //  if (id == db.productos[i].id) {
-            //    return res.render('product', {
-              //      index: db.productos,
-              //      imagen: `${db.productos[i].imagen}`,
-              //      descripcion: `${db.productos[i].descripcion}`,
-              //      nombreProducto: `${db.productos[i].nombreProducto}`,
-              //      comment: db.comentarios,
-              //  })
-          //  }
-      //  }
-  //  },
 
     show: function (req, res) {
         let id = req.params.id;
@@ -134,28 +118,31 @@ const productController = {
        })
     },
 
-   comment: function (req, res){
-    const resultValidation = validationResult(req)
-    if(!resultValidation.isEmpty()){
-        return res.render('product', {
-            errors : resultValidation.mapped(), 
-            oldData : req.body});
-    } else { 
-        const comentario = {
-            nombre: req.body.nombre,
-            descripcion: req.body.descripcion,
-            imagen: req.body.imagen
-        };
-
-    db.Comment.create(comentario)
-    .then(function(data){
-        return res.redirect('/product');
-    })
-    .catch(function(error){
-        console.log("Error al guardar el comentario", error)
-    })
+    comment: function (req, res) {
+        const resultValidation = validationResult(req);
+        if (!resultValidation.isEmpty()) {
+            return res.render('product', {
+                errors: resultValidation.mapped(),
+                oldData: req.body
+            });
+        } else { 
+            const comentario = {
+                userId: req.session.user.id, 
+                productId: req.body.productId, 
+                texto: req.body.texto 
+            };
+    
+            db.Comment.create(comentario)
+            .then(function(data){
+                return res.redirect(`/product/${req.body.productId}`); 
+            })
+            .catch(function(error){
+                console.log("Error al guardar el comentario", error);
+                return res.status(500).send("Error al guardar el comentario");
+            });
+        }
     }
-},
+    
 
 
 }
