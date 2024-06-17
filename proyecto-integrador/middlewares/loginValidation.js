@@ -24,7 +24,7 @@ const loginValidation = [
         .withMessage("Debes introducir una contraseña")
         .custom(function(value, { req }) {
             return db.User.findOne({
-                where: { email: value }
+                where: { email: req.body.email}
             })
             .then(function(user) {
                 if (user) {

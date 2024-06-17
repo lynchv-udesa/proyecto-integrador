@@ -3,7 +3,7 @@
 <%- include('./partials/head') %>
 
 	<body>
-		<%- include('./partials/headerLogueado') %>
+		<%- include('./partials/headerLogueado', { nombreUsuario: locals.user.nombreUsuario }) %>
 			<!-- Datos del usuario -->
 			<section class="info-usuario products-wrapper details">
 				<div class="row">

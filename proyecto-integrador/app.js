@@ -56,6 +56,7 @@ app.use(function (req, res, next) {
       })
       .catch(function (err) {
         console.log("error en cookies", err)
+        next();
       })
   } else {
     return next()

@@ -6,8 +6,11 @@ const op = db.Sequelize.Op;
 
 let loginController = {
     index: function(req, res){
-        //Mostramos el form de login
-        return res.render('login');
+        if (req.session.user != undefined) {
+            return res.redirect('/');
+        } else {
+            return res.render('login');
+        }
     },
     login: function(req, res){    
         const resultValidation = validationResult(req)       
@@ -24,7 +27,8 @@ let loginController = {
             .then( function ( user ) {
                 req.session.user = user;          
                 if(req.body.checkbox != undefined){
-                    res.cookie('userId', user.id, { maxAge: 1000 * 60 * 100})
+                    res.cookie('userId', user.id, { maxAge: 1000 * 60 * 5})
+                    console.log(res.cookie.userId)
                 }
                 return res.redirect('/');            
             })
