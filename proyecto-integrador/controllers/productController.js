@@ -78,11 +78,15 @@ const productController = {
             return res.render('product-add', {
                 errors : resultValidation.mapped(), 
                 oldData : req.body});
-        } else { 
-            const product = {
-                nombre: req.body.nombre,
-                descripcion: req.body.descripcion,
-                imagen: req.body.imagen
+        } 
+        
+        let data = req.body;
+        let idUsuario = req.session.user ? req.session.user.id : null;
+        const product = {
+                nombre: data.nombre,
+                descripcion: data.descripcion,
+                imagen: data.imagen,
+                idUsuario: idUsuario
             };
 
         db.Product.create(product)
@@ -92,8 +96,7 @@ const productController = {
         .catch(function(error){
             console.log("Error al guardar el producto", error)
         })
-        }
-    },
+        },
 
     update: function (req, res){
         const id = req.params.id;
@@ -101,7 +104,8 @@ const productController = {
         const product = {
             nombre: data.nombre,
             descripcion: data.descripcion,
-            imagen: data.imagen
+            imagen: data.imagen,
+            idUsuario: "0"
         }
         db.Product.update(product, {
             where: {
@@ -139,10 +143,15 @@ const productController = {
             });
   
         } else { 
+            let nombreUsuario = req.session.user ? req.session.user.nombreUsuario : null; 
+            let idUsuarioC = req.session.user ? req.session.user.id : null;
+            let idProducto = req.params.id
             const comentario = {
-                userId: req.session.user.id, 
-                productId: req.body.productId, 
-                textoC: req.body.texto 
+                texto: req.body.texto,
+                idUsuarioC: idUsuarioC, 
+                idProducto: idProducto,
+                nombre: nombreUsuario 
+                 
             };
     
             db.Comment.create(comentario)
