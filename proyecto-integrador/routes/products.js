@@ -14,8 +14,6 @@ router.post('/saveComment', commentValidations , productController.comment);
 router.get('/search', productController.search);
 router.get('/:id', productController.show);
 
-// Rutas de los formularios
-
 
 
 module.exports = router;
