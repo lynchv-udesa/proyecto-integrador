@@ -39,14 +39,16 @@ const productController = {
             }
         })
         .then(function (products) {
-            res.render('search-results', { productos: products, mensaje: `Resultados de búsqueda para '${query}'` });
+            res.render('search-results', { products: products, mensaje: `Resultados de búsqueda para '${query}'` });
         })
         .catch(function (error) {
             console.log(error);
-            res.render('search-results', { productos: [], mensaje: `Error al buscar productos para '${query}'` });
+            res.render('search-results', { products: [], mensaje: `Error al buscar productos para '${query}'` });
         });
     },
 
+
+  
     create: function (req, res) {
           if (req.session.user == undefined) {
               return res.redirect('/register');
@@ -78,15 +80,11 @@ const productController = {
             return res.render('product-add', {
                 errors : resultValidation.mapped(), 
                 oldData : req.body});
-        } 
-        
-        let data = req.body;
-        let idUsuario = req.session.user ? req.session.user.id : null;
-        const product = {
-                nombre: data.nombre,
-                descripcion: data.descripcion,
-                imagen: data.imagen,
-                idUsuario: idUsuario
+        } else { 
+            const product = {
+                nombre: req.body.nombre,
+                descripcion: req.body.descripcion,
+                imagen: req.body.imagen
             };
 
         db.Product.create(product)
@@ -96,7 +94,8 @@ const productController = {
         .catch(function(error){
             console.log("Error al guardar el producto", error)
         })
-        },
+        }
+    },
 
     update: function (req, res){
         const id = req.params.id;
@@ -104,8 +103,7 @@ const productController = {
         const product = {
             nombre: data.nombre,
             descripcion: data.descripcion,
-            imagen: data.imagen,
-            idUsuario: "0"
+            imagen: data.imagen
         }
         db.Product.update(product, {
             where: {
@@ -122,36 +120,16 @@ const productController = {
 
     comment: function (req, res) {
         const resultValidation = validationResult(req);
-        const productId = req.body.productId;
         if (!resultValidation.isEmpty()) {
-            db.Product.findByPk(productId, {
-                include: [
-                    { association: 'usuarios' },
-                    { association: 'comentarios' }
-                ]
-            })
-            .then(data => {
-                return res.render('product', {
-                    producto: data,
-                    errors: resultValidation.mapped(),
-                    oldData: req.body
+            return res.render('product', {
+                errors: resultValidation.mapped(),
+                oldData: req.body
             });
-            })
-            .catch(error => {
-                console.log("Error al recuperar el producto", error);
-                return res.status(500).send("Error al recuperar el producto");
-            });
-  
         } else { 
-            let nombreUsuario = req.session.user ? req.session.user.nombreUsuario : null; 
-            let idUsuarioC = req.session.user ? req.session.user.id : null;
-            let idProducto = req.params.id
             const comentario = {
-                texto: req.body.texto,
-                idUsuarioC: idUsuarioC, 
-                idProducto: idProducto,
-                nombre: nombreUsuario 
-                 
+                userId: req.session.user.id, 
+                productId: req.body.productId, 
+                texto: req.body.texto 
             };
     
             db.Comment.create(comentario)
