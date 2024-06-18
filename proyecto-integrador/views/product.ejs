@@ -35,10 +35,12 @@
                                 <img src="<%= comentario.imagenPerfilC %>" alt="">
                                 <div class="data">
                                     <p class="user">
-                                        <strong> <a class="product-detail-a" href="/users/profile">
-                                                <%= comentario.nombreUsuarioC %>
-                                            </a> </strong>
-                                        <%= comentario.textoC %>
+                                        <strong> 
+                                            <a class="product-detail-a" href="/users/profile/<%= comentario.idUsuarioC %>">
+                                                <%= comentario.nombre %>
+                                            </a> 
+                                        </strong>
+                                        <%= comentario.texto %>
                                     </p>
                                 </div>
                             </article>
@@ -47,16 +49,16 @@
                         <% if (locals.user) { %>
                             <form class="form" action="/products/saveComment" method="post">
                                 <input type="hidden" name="productId" value="<%= producto.id %>">
-                                <input class="form-input" type="text" name="comentario" value="<%= locals.oldData && locals.oldData.comentario ? oldData.comentario : null %>" placeholder="Agregar comentario">
-                                <% if (locals.errors && errors.comentario) { %>
-                                    <div class="error-msg"><%= errors.comentario.msg %></div>
+                                <input class="form-input" type="text" name="texto" value="<%= locals.oldData && locals.oldData.texto ? oldData.texto : null %>" placeholder="Agregar comentario">
+                                <% if (locals.errors && errors.texto) { %>
+                                    <div class="error-msg"><%= errors.texto.msg %></div>
                                 <% } %>
                                 <label class="form-label" for="comentario"></label>
                                 <button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
                             </form>
                         <% } else { %>
                             <form class="form" action="/login" method="GET">
-                                <input class="form-input" type="text" value="" placeholder="Agregar comentario">
+                                <input class="form-input" type="text" name="texto" value="" placeholder="Agregar comentario">
                                 <label class="form-label" for="comentario"></label>
                                 <button type="submit" class="buy-now-button">DEBES LOGUEARTE PARA COMENTAR</button>
                             </form>

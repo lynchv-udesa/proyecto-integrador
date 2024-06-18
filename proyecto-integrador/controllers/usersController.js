@@ -5,22 +5,27 @@ const usersController = {
 
 
    profile: function (req, res) {
-    let usuario = req.session.user;
+ 
+    
+    const userId = req.params.id;
 
-    db.User.findByPk(req.session.user.id, {
-        include: [{ model: db.Product, as: 'products', order: [['createdAt', 'DESC']] }]
+    db.User.findByPk(userId, {
+        include: [{ model: db.Product, as: 'productos', order: [['createdAt', 'DESC']] }]
     })
     .then(function(usuario) {
-        let id = usuario.id;
+        if (!usuario) {
+            return res.status(404).send("Usuario no encontrado");
+        }
+
         db.Product.findAll({
-            where: { idUsuario: { [op.like]: id } },
-            order: [
-                ['createdAt', 'DESC']
-            ]
+            where: { idUsuario: userId },
+            order: [['createdAt', 'DESC']]
         })
+
         .then(function(productos) {
             res.render('profile', { usuario: usuario, productos: productos });
         })
+        
         .catch(function(err) {
             console.log(err);
             res.status(500).send("Error al obtener los productos del usuario.");

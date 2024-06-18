@@ -1,7 +1,7 @@
 const { body } = require("express-validator");
 
 const commentValidation = [
-    body("comentario")
+    body("texto")
         .notEmpty()
         .withMessage("Debes agregar un comentario")
         .bail()

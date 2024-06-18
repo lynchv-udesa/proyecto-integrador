@@ -39,16 +39,14 @@ const productController = {
             }
         })
         .then(function (products) {
-            res.render('search-results', { products: products, mensaje: `Resultados de búsqueda para '${query}'` });
+            res.render('search-results', { productos: products, mensaje: `Resultados de búsqueda para '${query}'` });
         })
         .catch(function (error) {
             console.log(error);
-            res.render('search-results', { products: [], mensaje: `Error al buscar productos para '${query}'` });
+            res.render('search-results', { productos: [], mensaje: `Error al buscar productos para '${query}'` });
         });
     },
 
-
-  
     create: function (req, res) {
           if (req.session.user == undefined) {
               return res.redirect('/register');
@@ -120,16 +118,31 @@ const productController = {
 
     comment: function (req, res) {
         const resultValidation = validationResult(req);
+        const productId = req.body.productId;
         if (!resultValidation.isEmpty()) {
-            return res.render('product', {
-                errors: resultValidation.mapped(),
-                oldData: req.body
+            db.Product.findByPk(productId, {
+                include: [
+                    { association: 'usuarios' },
+                    { association: 'comentarios' }
+                ]
+            })
+            .then(data => {
+                return res.render('product', {
+                    producto: data,
+                    errors: resultValidation.mapped(),
+                    oldData: req.body
             });
+            })
+            .catch(error => {
+                console.log("Error al recuperar el producto", error);
+                return res.status(500).send("Error al recuperar el producto");
+            });
+  
         } else { 
             const comentario = {
                 userId: req.session.user.id, 
                 productId: req.body.productId, 
-                texto: req.body.texto 
+                textoC: req.body.texto 
             };
     
             db.Comment.create(comentario)
