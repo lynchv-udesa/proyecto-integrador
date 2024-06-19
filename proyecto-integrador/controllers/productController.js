@@ -70,10 +70,10 @@ const productController = {
         let data = req.body;
         let idUsuario = req.session.user ? req.session.user.id : null;
         const product = {
-                nombre: data.nombre,
-                descripcion: data.descripcion,
-                imagen: data.imagen,
-                idUsuario: idUsuario
+            nombre: data.nombre,
+            descripcion: data.descripcion,
+            imagen: data.imagen,
+            idUsuario: idUsuario
             };
 
         db.Product.create(product)
@@ -142,44 +142,31 @@ const productController = {
     comment: function (req, res) {
         const resultValidation = validationResult(req);
         if (!resultValidation.isEmpty()) {
-            db.Product.findByPk(productId, {
-                include: [
-                    { association: 'usuarios' },
-                    { association: 'comentarios' }
-                ]
-            })
-            .then(data => {
-                return res.render('product', {
-                    producto: data,
-                    errors: resultValidation.mapped(),
-                    oldData: req.body
-            });
-            })
-            .catch(error => {
-                console.log("Error al recuperar el producto", error);
-                return res.status(500).send("Error al recuperar el producto");
-            });
+            return res.render('product', {
+                producto: data,
+                errors: resultValidation.mapped(),
+                oldData: req.body
+        })}
   
-        } else { 
-            let nombreUsuario = req.session.user ? req.session.user.nombreUsuario : null; 
-            let idUsuarioC = req.session.user ? req.session.user.id : null;
-            let idProducto = req.params.id
-            const comentario = {
-                texto: req.body.texto,
-                idUsuarioC: idUsuarioC, 
-                idProducto: idProducto,
-                nombre: nombreUsuario  
-            };
-    
-            db.Comment.create(comentario)
-            .then(function(data){
-                return res.redirect(`/product/${req.body.productId}`); 
-            })
-            .catch(function(error){
-                console.log("Error al guardar el comentario", error);
-                return res.status(500).send("Error al guardar el comentario");
-            });
-        }
+        let nombreUsuario = req.session.user ? req.session.user.nombreUsuario : null; 
+        let idUsuario = req.session.user ? req.session.user.id : null;
+
+        const comentario = {
+            texto: req.body.texto,
+            idUsuarioC: idUsuario, 
+            //idProducto: id,
+            nombre: nombreUsuario  
+        };
+
+        db.Comment.create(comentario)
+        .then(function(data){
+            return res.redirect('/'); 
+        })
+        .catch(function(error){
+            console.log("Error al guardar el comentario", error);
+            //return res.status(500).send("Error al guardar el comentario");
+        });
+        
     }
     
 
