@@ -23,28 +23,37 @@
                             <h2 class="products-title_especial">
                                 <%= producto.nombre %>
                             </h2>
+                            <% if (locals.user && locals.user.id === producto.idUsuario) { %>
                             <p class="product-detail-description">
                                 <a class="product-detail-a" href="/products/edit/<%= producto.id %>">Editar</a>
                             </p>
+                            <p class="product-detail-description">
+                                <a class="product-detail-a" href="/products/edit/<%= producto.id %>">Borrar</a>
+                            </p>
+                            <% } %>
                         </div>
                         <p class="product-detail-description-p">
                             <%= producto.descripcion %>
                         </p>
-                        <% producto.comentarios.forEach(function(comentario) { %>
-                            <article>
-                                <img src="<%= comentario.imagenPerfilC %>" alt="">
-                                <div class="data">
-                                    <p class="user">
-                                        <strong> 
-                                            <a class="product-detail-a" href="/users/profile/<%= comentario.idUsuarioC %>">
-                                                <%= comentario.nombre %>
-                                            </a> 
-                                        </strong>
-                                        <%= comentario.texto %>
-                                    </p>
-                                </div>
-                            </article>
-                        <% }) %>
+                        <% if (producto.comentarios && producto.comentarios.length > 0) { %>
+                            <% producto.comentarios.forEach(function(comentario) { %>
+                                <article>
+                                    <img src="<%= comentario.usuarios.fotoPerfil %>" alt="">
+                                    <div class="data">
+                                        <p class="user">
+                                            <strong> 
+                                                <a class="product-detail-a" href="/users/profile/<%= comentario.idUsuarioC %>">
+                                                    <%= comentario.nombre %>
+                                                </a> 
+                                            </strong>
+                                            <%= comentario.texto %>
+                                        </p>
+                                    </div>
+                                </article>
+                            <% }) %>
+                        <% } else { %>
+                            <p>No hay comentarios.</p>
+                        <% } %>
 
                         <% if (locals.user) { %>
                             <form class="form" action="/products/saveComment" method="post">

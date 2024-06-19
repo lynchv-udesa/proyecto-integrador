@@ -1,7 +1,7 @@
 
 const db = require("../database/models");
 const op = db.Sequelize.Op;
-const {validationResult} = require('express-validator')
+const { validationResult } = require('express-validator')
 
 
 const productController = {
@@ -11,12 +11,17 @@ const productController = {
         let id = req.params.id;
 
         db.Product.findByPk(id, {
-            // includes de usuarios y comentarios
             include: [
                 { association: 'usuarios' },
-                { association: 'comentarios' }
+                {
+                    association: 'comentarios',
+                    include: [{ association: 'usuarios' }]
+                }
             ]
         })
+            .then(data => {
+                return res.render('product', { producto: data, user: req.session.user });
+            })
             .then(data => {
                 //console.log("producto por id: ", JSON.stringify(data,null, 4))
                 return res.render('product', { producto: data });
@@ -38,18 +43,18 @@ const productController = {
                 ]
             }
         })
-        .then(function (products) {
-            res.render('search-results', { productos: products, mensaje: `Resultados de búsqueda para '${query}'` });
-        })
-        .catch(function (error) {
-            console.log(error);
-            res.render('search-results', { productos: [], mensaje: `Error al buscar productos para '${query}'` });
-        });
+            .then(function (products) {
+                res.render('search-results', { productos: products, mensaje: `Resultados de búsqueda para '${query}'` });
+            })
+            .catch(function (error) {
+                console.log(error);
+                res.render('search-results', { productos: [], mensaje: `Error al buscar productos para '${query}'` });
+            });
     },
 
     create: function (req, res) {
-          if (req.session.user == undefined) {
-              return res.redirect('/register');
+        if (req.session.user == undefined) {
+            return res.redirect('/register');
         } else {
             return res.render('product-add', {
                 mensaje: "Agregue el producto",
@@ -58,14 +63,15 @@ const productController = {
         }
     },
 
-    store: function (req, res){
+    store: function (req, res) {
         const resultValidation = validationResult(req)
-        if(!resultValidation.isEmpty()){
+        if (!resultValidation.isEmpty()) {
             return res.render('product-add', {
-                errors : resultValidation.mapped(), 
-                oldData : req.body});
-        } 
-        
+                errors: resultValidation.mapped(),
+                oldData: req.body
+            });
+        }
+
 
         let data = req.body;
         let idUsuario = req.session.user ? req.session.user.id : null;
@@ -74,104 +80,118 @@ const productController = {
             descripcion: data.descripcion,
             imagen: data.imagen,
             idUsuario: idUsuario
-            };
+        };
 
         db.Product.create(product)
-        .then(function(data){
-            return res.redirect('/');
-        })
-        .catch(function(error){
-            console.log("Error al guardar el producto", error)
-        })
-        },
+            .then(function (data) {
+                return res.redirect('/');
+            })
+            .catch(function (error) {
+                console.log("Error al guardar el producto", error)
+            })
+    },
 
-    edit: function (req, res){
-        
+    edit: function (req, res) {
+
         if (req.session.user == undefined) {
             return res.redirect('/register');
 
-        }else {
+        } else {
             let id = req.params.id;
             db.Product.findByPk(id, {
                 include: [
                     { association: 'usuarios' }
                 ]
             })
-            .then(productos => {
-                if (productos && productos.idUsuario === req.session.user.id){
-                    return res.render('product-edit', { producto: productos })
-                } else{
-                    return res.redirect('/');
-                }
-            })
-            .catch(function(error){
-                console.log(error)
-            })}
+                .then(productos => {
+                    if (productos && productos.idUsuario === req.session.user.id) {
+                        return res.render('product-edit', { producto: productos })
+                    } else {
+                        return res.redirect('/');
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error)
+                })
+        }
     },
 
-    update: function (req, res){
+    update: function (req, res) {
         const resultValidation = validationResult(req)
-        if(!resultValidation.isEmpty()){
+        if (!resultValidation.isEmpty()) {
             return res.render('product-edit', {
-                errors : resultValidation.mapped(), 
-                oldData : req.body});
-        } 
-       
+                errors: resultValidation.mapped(),
+                oldData: req.body
+            });
+        }
+
         let data = req.body;
         let idUsuario = req.session.user ? req.session.user.id : null;
         const product = {
-                nombre: data.nombre,
-                descripcion: data.descripcion,
-                imagen: data.imagen,
-                idUsuario: idUsuario
-            };
+            nombre: data.nombre,
+            descripcion: data.descripcion,
+            imagen: data.imagen,
+            idUsuario: idUsuario
+        };
         let id = req.params.id
         db.Product.update(product, {
             where: {
                 id: id
             }
         })
-        .then(function (data){
-            res.redirect('/')
-        })
-        .catch(function (error){
-            console.log("Error al guardar el producto", err)
-       })
+            .then(function (data) {
+                res.redirect('/')
+            })
+            .catch(function (error) {
+                console.log("Error al guardar el producto", err)
+            })
     },
-
+    
     comment: function (req, res) {
         const resultValidation = validationResult(req);
+        let data = req.body;
+        let idProducto = req.body.productId;
         if (!resultValidation.isEmpty()) {
-            return res.render('product', {
-                producto: data,
-                errors: resultValidation.mapped(),
-                oldData: req.body
-        })}
-  
-        let nombreUsuario = req.session.user ? req.session.user.nombreUsuario : null; 
-        let idUsuario = req.session.user ? req.session.user.id : null;
+            db.Product.findByPk(idProducto, {
+                include: [
+                    { association: 'usuarios' },
+                    {
+                        association: 'comentarios',
+                        include: [{ association: 'usuarios' }]
+                    }
+                ]
+            })
+                .then(producto => {
+                    return res.render('product', {
+                        producto: producto,
+                        errors: resultValidation.mapped(),
+                        oldData: req.body
+                    });
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        } else {
+            let nombreUsuario = req.session.user ? req.session.user.nombreUsuario : null;
+            let idUsuario = req.session.user ? req.session.user.id : null;
 
-        const comentario = {
-            texto: req.body.texto,
-            idUsuarioC: idUsuario, 
-            //idProducto: id,
-            nombre: nombreUsuario  
-        };
+            const comentario = {
+                texto: req.body.texto,
+                idUsuarioC: idUsuario,
+                idProducto: idProducto,
+                nombre: nombreUsuario
+            };
 
-        db.Comment.create(comentario)
-        .then(function(data){
-            return res.redirect('/'); 
-        })
-        .catch(function(error){
-            console.log("Error al guardar el comentario", error);
-            //return res.status(500).send("Error al guardar el comentario");
-        });
-        
+            db.Comment.create(comentario)
+                .then(function (data) {
+                    return res.redirect('/products/' + idProducto);
+                })
+                .catch(function (error) {
+                    console.log("Error al guardar el comentario", error);
+                });
+        }
     }
-    
-
-
-}
+};
 
 
 module.exports = productController;
