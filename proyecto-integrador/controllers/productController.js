@@ -58,20 +58,6 @@ const productController = {
         }
     },
 
-    edit: function (req, res){
-        if (req.session.user == undefined) {
-            return res.redirect('/register');
-        } else {
-        const id = req.params.id;
-        db.Product.findByPk(id)
-        .then(function(productData){
-            res.render("product-edit", {product : productData})
-        })
-        .catch(function(error){
-            console.log(error)
-        })}
-    },
-
     store: function (req, res){
         const resultValidation = validationResult(req)
         if(!resultValidation.isEmpty()){
@@ -80,6 +66,7 @@ const productController = {
                 oldData : req.body});
         } 
         
+
         let data = req.body;
         let idUsuario = req.session.user ? req.session.user.id : null;
         const product = {
@@ -98,15 +85,47 @@ const productController = {
         })
         },
 
+    edit: function (req, res){
+        
+        if (req.session.user == undefined) {
+            return res.redirect('/register');
+
+        }else {
+            let id = req.params.id;
+            db.Product.findByPk(id, {
+                include: [
+                    { association: 'usuarios' }
+                ]
+            })
+            .then(productos => {
+                if (productos && productos.idUsuario === req.session.user.id){
+                    return res.render('product-edit', { producto: productos })
+                } else{
+                    return res.redirect('/');
+                }
+            })
+            .catch(function(error){
+                console.log(error)
+            })}
+    },
+
     update: function (req, res){
-        const id = req.params.id;
-        const data = req.body;
+        const resultValidation = validationResult(req)
+        if(!resultValidation.isEmpty()){
+            return res.render('product-edit', {
+                errors : resultValidation.mapped(), 
+                oldData : req.body});
+        } 
+       
+        let data = req.body;
+        let idUsuario = req.session.user ? req.session.user.id : null;
         const product = {
-            nombre: data.nombre,
-            descripcion: data.descripcion,
-            imagen: data.imagen,
-            idUsuario: "0"
-        }
+                nombre: data.nombre,
+                descripcion: data.descripcion,
+                imagen: data.imagen,
+                idUsuario: idUsuario
+            };
+        let id = req.params.id
         db.Product.update(product, {
             where: {
                 id: id
@@ -122,7 +141,6 @@ const productController = {
 
     comment: function (req, res) {
         const resultValidation = validationResult(req);
-        const productId = req.body.productId;
         if (!resultValidation.isEmpty()) {
             db.Product.findByPk(productId, {
                 include: [
@@ -150,8 +168,7 @@ const productController = {
                 texto: req.body.texto,
                 idUsuarioC: idUsuarioC, 
                 idProducto: idProducto,
-                nombre: nombreUsuario 
-                 
+                nombre: nombreUsuario  
             };
     
             db.Comment.create(comentario)
