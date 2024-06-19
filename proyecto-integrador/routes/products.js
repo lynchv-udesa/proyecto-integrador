@@ -9,6 +9,7 @@ router.post('/store', productValidations ,productController.store);
 
 router.get('/edit/:id', productController.edit);
 router.post('/update/:id', productValidations , productController.update);
+router.post('/destroy/:id', productController.destroy);
 
 router.post('/saveComment', commentValidations , productController.comment);
 

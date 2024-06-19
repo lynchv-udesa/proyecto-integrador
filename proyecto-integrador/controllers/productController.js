@@ -146,7 +146,35 @@ const productController = {
                 console.log("Error al guardar el producto", err)
             })
     },
-    
+
+    destroy: function (req, res) {
+        let productoABorrar = req.params.id;
+
+
+        db.Comment.destroy({
+            where: {
+                idProducto: productoABorrar
+            }
+        })
+            .then(() => {
+
+                db.Product.destroy({
+                    where: {
+                        id: productoABorrar
+                    }
+                })
+                    .then(() => {
+                        return res.redirect('/');
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    },
+
     comment: function (req, res) {
         const resultValidation = validationResult(req);
         let data = req.body;
