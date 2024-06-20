@@ -747,6 +747,7 @@ textarea.form-input {
   font-weight: 500;
   font-style: normal;
   margin-right: 1em;
+  margin-left: 1em;
 }
 
 .profile-a:hover {
