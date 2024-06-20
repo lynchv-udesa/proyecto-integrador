@@ -14,26 +14,26 @@
         <img src="/images/logo.png" alt="">
         <form class="form-data" action="/products/update/<%= producto.id %>" method="post" >
             <div class="contenedor-input">
-                <input class="form-input" type="text" name="imagen" placeholder="Imagen" value="<%= locals.oldData && locals.oldData.imagen ? locals.oldData.imagen : '' %>">
+                <input class="form-input" type="text" name="imagen" placeholder="Imagen" value="<%= locals.oldData && oldData.imagen ? oldData.imagen : '' %>">
                 <label class="form-label" for="imagen"></label>
-                <% if (locals.errors && locals.errors.imagen) { %>
-                    <div class="error-msg"><%= locals.errors.imagen.msg %></div>
+                <% if (locals.errors && errors.imagen) { %>
+                    <div class="error-msg"><%= errors.imagen.msg %></div>
                 <% } %>
             </div>
 
             <div class="contenedor-input">
-                <input class="form-input" type="text" name="nombre" placeholder="Nombre del producto" value="<%= locals.oldData && locals.oldData.nombre ? locals.oldData.nombre : '' %>">
+                <input class="form-input" type="text" name="nombre" placeholder="Nombre del producto" value="<%= locals.oldData && oldData.nombre ? oldData.nombre : '' %>">
                 <label class="form-label" for="nombre"></label>
-                <% if (locals.errors && locals.errors.nombre) { %>
-                    <div class="error-msg"><%= locals.errors.nombre.msg %></div>
+                <% if (locals.errors && errors.nombre) { %>
+                    <div class="error-msg"><%= errors.nombre.msg %></div>
                 <% } %>
             </div>
 
             <div class="contenedor-input">
-                <textarea class="form-input" name="descripcion" placeholder="Descripción"><%= locals.oldData && locals.oldData.descripcion ? locals.oldData.descripcion : '' %></textarea>
+                <textarea class="form-input" name="descripcion" placeholder="Descripción"><%= locals.oldData && oldData.descripcion ? oldData.descripcion : '' %></textarea>
                 <label class="form-label" for="descripcion"></label>
-                <% if (locals.errors && locals.errors.descripcion) { %>
-                    <div class="error-msg"><%= locals.errors.descripcion.msg %></div>
+                <% if (locals.errors && errors.descripcion) { %>
+                    <div class="error-msg"><%= errors.descripcion.msg %></div>
                 <% } %>
             </div>
 

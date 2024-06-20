@@ -118,33 +118,41 @@ const productController = {
 
     update: function (req, res) {
         const resultValidation = validationResult(req)
-        if (!resultValidation.isEmpty()) {
-            return res.render('product-edit', {
-                errors: resultValidation.mapped(),
-                oldData: req.body
-            });
-        }
-
-        let data = req.body;
-        let idUsuario = req.session.user ? req.session.user.id : null;
-        const product = {
-            nombre: data.nombre,
-            descripcion: data.descripcion,
-            imagen: data.imagen,
-            idUsuario: idUsuario
-        };
         let id = req.params.id
-        db.Product.update(product, {
-            where: {
-                id: id
-            }
-        })
-            .then(function (data) {
-                res.redirect('/')
+        if (!resultValidation.isEmpty()) {
+            db.Product.findByPk(id)
+                .then(producto => {
+                    return res.render('product-edit', {
+                        errors: resultValidation.mapped(),
+                        oldData: req.body,
+                        producto: producto,
+                        user: req.session.user,
+                        mensaje: "Debes completar todos los campos"
+                    })
+                })
+                .catch(error => {
+                    console.log(error)
+                });
+        } else {
+            let data = req.body;
+            let idUsuario = req.session.user ? req.session.user.id : null;
+            const product = {
+                nombre: data.nombre,
+                descripcion: data.descripcion,
+                imagen: data.imagen,
+                idUsuario: idUsuario
+            };
+            db.Product.update(product, {
+                where: {
+                    id: id
+                }
             })
-            .catch(function (error) {
-                console.log("Error al guardar el producto", err)
-            })
+                .then(function (data) {
+                    res.redirect('/')
+                })
+                .catch(function (error) {
+                    console.log("Error al guardar el producto", err)
+                })}
     },
 
     destroy: function (req, res) {
