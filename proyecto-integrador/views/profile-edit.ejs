@@ -11,29 +11,38 @@
             </div>
             <div class="container__form">
                 <img src="/images/logo.png" alt="">
-                <form class="form-data" action="/users/profile" method="get">
+                <form class="form-data" action="/users/profile/edit/<%= user.id %>" method="post">
                     <div class="contenedor-input">
-                        <input class="form-input" type="email" placeholder="Correo eletrónico" required>
+                        <input class="form-input" name="email" type="email" placeholder="Correo electrónico" value="<%= user.email %>">
+                        <% if(locals.errors && errors.email) { %>  
+                            <div class="error-msg"> <%= errors.email.msg %> </div>
+                        <% } %>
                         <label class="form-label" for="email"></label>
                     </div>
 
                     <div class="contenedor-input">
-                        <input class="form-input" type="text" placeholder="Usuario" required>
+                        <input class="form-input" type="text" name="nombreUsuario" placeholder="Usuario" value="<%= user.nombreUsuario %>">
+                        <% if (locals.errors && locals.errors.nombreUsuario) { %>
+                            <div class="error-msg"><%= locals.errors.nombreUsuario.msg %></div>
+                        <% } %>
                         <label class="form-label" for="nombreDeUsuario"></label>
                     </div>
 
                     <div class="contenedor-input">
-                        <input class="form-input" type="password" placeholder="Contraseña" required>
+                        <input class="form-input" type="password" name="contrasenia" placeholder="Contraseña" value="">
+                        <% if (locals.errors && locals.errors.contrasenia) { %>
+                            <div class="error-msg"><%= locals.errors.contrasenia.msg %></div>
+                        <% } %>
                         <label class="form-label" for="contraseña"></label>
                     </div>
 
                     <div class="contenedor-input">
-                        <input class="form-input" type="date" placeholder="Fecha de nacimiento" required>
+                        <input class="form-input" type="date" name="fechaNacimiento" placeholder="Fecha de nacimiento" value="<%= user.fechaNacimiento %>">
                         <label class="form-label" for="fecha"></label>
                     </div>
 
                     <div class="contenedor-input">
-                        <input class="form-input" type="number" placeholder="Numero de documento" required>
+                        <input class="form-input" type="number" name="dni" placeholder="Número de documento" value="<%= user.dni %>">
                         <label class="form-label" for="documento"></label>
                     </div>
 
