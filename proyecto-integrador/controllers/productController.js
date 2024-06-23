@@ -17,7 +17,10 @@ const productController = {
                     association: 'comentarios',
                     include: [{ association: 'usuarios' }]
                 }
-            ]
+            ],
+            order: [
+                ["createdAt", "DESC"]
+            ],
         })
             .then(data => {
                 return res.render('product', { producto: data, user: req.session.user });
